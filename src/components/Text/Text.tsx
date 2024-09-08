@@ -7,21 +7,63 @@ import {
 
 interface TextProps extends RNTextProps {
   variant?: TextVariants; //
+  bold?: boolean;
+  italic?: boolean;
+  semibold?: boolean;
 }
 
 // font size and lineHeight
 export function Text({
   children,
   variant = 'paragraphMedium',
+  bold,
+  italic,
+  semibold,
+  style,
   ...rest
 }: TextProps) {
-  const style = $fontSizes[variant];
+  //const style = $fontSizes[variant];
+
+  const fontFamily = getFotFamily(variant, bold, italic, semibold);
 
   return (
-    <RNText style={style} {...rest}>
+    <RNText style={[$fontSizes[variant], {fontFamily}, style]} {...rest}>
       {children}
     </RNText>
   );
+}
+
+function getFotFamily(
+  variant: TextVariants,
+  bold?: boolean,
+  italic?: boolean,
+  semibold?: boolean,
+) {
+  if (
+    variant === 'headingLarge' ||
+    variant === 'headingMedium' ||
+    variant === 'headingSmall'
+  ) {
+    return italic ? $fontFamily.boldItalic : $fontFamily.bold;
+  }
+  if (bold && italic) {
+    return $fontFamily.boldItalic;
+  }
+  if (bold) {
+    return $fontFamily.bold;
+  }
+  if (italic) {
+    return $fontFamily.italic;
+  }
+
+  if (semibold && italic) {
+    return $fontFamily.mediumItalic;
+  }
+
+  if (semibold) {
+    return $fontFamily.medium;
+  }
+  return $fontFamily.regular;
 }
 
 //Define the type of text variants
@@ -46,4 +88,17 @@ const $fontSizes: Record<TextVariants, TextStyle> = {
 
   paragraphCaptionLarge: {fontSize: 12, lineHeight: 16.8},
   paragraphCaptionMedium: {fontSize: 10, lineHeight: 14},
+};
+
+const $fontFamily = {
+  black: 'Satoshi-Black',
+  blackItalic: 'Satoshi-BlackItalic',
+  bold: 'Satoshi-Bold',
+  boldItalic: 'Satoshi-BoldItalic',
+  italic: 'Satoshi-Italic',
+  light: 'Satoshi-Light',
+  lightItalic: 'Satoshi-LightItalic',
+  medium: 'Satoshi-Medium',
+  mediumItalic: 'Satoshi-MediumItalic',
+  regular: 'Satoshi-Regular',
 };

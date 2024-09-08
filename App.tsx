@@ -14,7 +14,7 @@ import {Text} from './src/components/Text/Text';
 function App(): React.JSX.Element {
   return (
     <SafeAreaView>
-      <Text variant="" style={{color: 'red'}}>
+      <Text variant="headingLarge" italic>
         Test
       </Text>
     </SafeAreaView>
