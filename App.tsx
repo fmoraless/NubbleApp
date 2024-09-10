@@ -13,6 +13,7 @@ import {Text} from './src/components/Text/Text';
 import {Button} from './src/components/Button/Button';
 import {ThemeProvider} from '@shopify/restyle';
 import {theme} from './src/theme/theme';
+import {Box} from './src/components/Box/Box';
 
 function App(): React.JSX.Element {
   return (
@@ -22,7 +23,12 @@ function App(): React.JSX.Element {
           <Text variant="headingLarge" italic>
             Nubble App
           </Text>
-          <Button title="Entrar" />
+
+          <Box marginBottom="s24">
+            <Button title="Entrar" />
+          </Box>
+
+          <Button loading title="Entrar" />
         </View>
       </SafeAreaView>
     </ThemeProvider>

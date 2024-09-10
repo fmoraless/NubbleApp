@@ -1,7 +1,7 @@
 import {createTheme} from '@shopify/restyle';
 
 const palette = {
-  greenPrimary: '##074C4E',
+  greenPrimary: '#074C4E',
   greenPrimaryLight: '##EAF6F6',
 
   carrotSecondary: '#F86F2D',
@@ -40,23 +40,22 @@ export const theme = createTheme({
     successLight: palette.greenSuccessLight,
   },
   spacing: {
-    s: 8,
-    m: 16,
-    l: 24,
-    xl: 40,
+    s4: 4,
+    s8: 8,
+    s12: 12,
+    s14: 14,
+    s16: 16,
+    s20: 20,
+    s24: 24,
+    s32: 32,
+    s40: 40,
+    s48: 48,
+    s56: 56,
   },
-  textVariants: {
-    header: {
-      fontWeight: 'bold',
-      fontSize: 34,
-    },
-    body: {
-      fontSize: 16,
-      lineHeight: 24,
-    },
-    defaults: {
-      // We can define a default text variant here.
-    },
+  borderRadii: {
+    s8: 8,
+    s12: 12,
+    s16: 16,
   },
 });
 
