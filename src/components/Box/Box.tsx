@@ -31,4 +31,7 @@ export type TouchableOpacityBoxProps = BackgroundColorProps<Theme> &
 export const TouchableOpacityBox = createRestyleComponent<
   TouchableOpacityBoxProps,
   Theme
->([backgroundColor, spacing, spacingShorthand, border], TouchableOpacity);
+>(
+  [backgroundColor, spacing, spacingShorthand, layout, border],
+  TouchableOpacity,
+);
