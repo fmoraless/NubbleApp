@@ -1,11 +1,11 @@
 import {useTheme} from '@shopify/restyle';
 import React from 'react';
-import {ActivityIndicator} from 'react-native';
 import {Text} from '../Text/Text';
 
 import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
 import {ThemeColors} from '../../theme/theme';
 import {buttonPresets} from './buttonPresets';
+import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 /**
  * UI
@@ -38,7 +38,7 @@ export function Button({
       {...buttonPreset.container}
       {...touchableOpacityBoxProps}>
       {loading ? (
-        <ActivityIndicator />
+        <ActivityIndicator color={buttonPreset.content} size={30} />
       ) : (
         <Text variant="paragraphMedium" bold color={buttonPreset.content}>
           {title}
