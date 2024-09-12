@@ -24,7 +24,9 @@ function App(): React.JSX.Element {
             Nubble App
           </Text>
 
-          <Button title="Entrar" marginBottom="s14" />
+          <Button preset="primary" title="Primary" marginBottom="s14" />
+          <Button preset="outline" title="Outline" marginBottom="s14" />
+          <Button preset="secondary" title="Secondary" marginBottom="s14" />
 
           <Button loading title="Entrar" />
         </View>

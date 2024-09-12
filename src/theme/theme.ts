@@ -26,9 +26,10 @@ export const theme = createTheme({
   colors: {
     ...palette,
     primary: palette.greenPrimary,
-    primaryContrast: palette.greenPrimaryLight,
+    primaryContrast: palette.grayWhite,
 
     buttonPrimary: palette.greenPrimary,
+    transparent: 'transparent',
 
     background: palette.grayWhite,
     backgroundContrast: palette.grayBlack,
@@ -64,3 +65,4 @@ export const theme = createTheme({
 });
 
 export type Theme = typeof theme;
+export type ThemeColors = keyof Theme['colors'];
