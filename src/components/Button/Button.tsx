@@ -27,7 +27,7 @@ export function Button({
       {loading ? (
         <ActivityIndicator />
       ) : (
-        <Text variant="paragraphMedium" bold style={{color: '#fff'}}>
+        <Text variant="paragraphMedium" bold color="carrotSecondary">
           {title}
         </Text>
       )}
