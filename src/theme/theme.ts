@@ -2,7 +2,7 @@ import {createTheme} from '@shopify/restyle';
 
 const palette = {
   greenPrimary: '#074C4E',
-  greenPrimaryLight: '##EAF6F6',
+  greenPrimaryLight: '#EAF6F6',
 
   carrotSecondary: '#F86F2D',
   carrotSecondaryLight: '#FAE6DD',
