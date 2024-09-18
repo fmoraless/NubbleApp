@@ -12,7 +12,7 @@ const SRText = createText<Theme>();
 type SRTextProps = React.ComponentProps<typeof SRText>;
 
 interface TextProps extends SRTextProps {
-  variant?: TextVariants;
+  preset?: TextVariants;
   bold?: boolean;
   italic?: boolean;
   semibold?: boolean;
@@ -21,21 +21,21 @@ interface TextProps extends SRTextProps {
 // font size and lineHeight
 export function Text({
   children,
-  variant = 'paragraphMedium',
+  preset = 'paragraphMedium',
   bold,
   italic,
   semibold,
   style,
   ...sRTextProps
 }: TextProps) {
-  //const style = $fontSizes[variant];
+  //const style = $fontSizes[preset];
 
-  const fontFamily = getFotFamily(variant, bold, italic, semibold);
+  const fontFamily = getFotFamily(preset, bold, italic, semibold);
 
   return (
     <SRText
       color="backgroundContrast"
-      style={[$fontSizes[variant], {fontFamily}, style]}
+      style={[$fontSizes[preset], {fontFamily}, style]}
       {...sRTextProps}>
       {children}
     </SRText>
@@ -43,15 +43,15 @@ export function Text({
 }
 
 function getFotFamily(
-  variant: TextVariants,
+  preset: TextVariants,
   bold?: boolean,
   italic?: boolean,
   semibold?: boolean,
 ) {
   if (
-    variant === 'headingLarge' ||
-    variant === 'headingMedium' ||
-    variant === 'headingSmall'
+    preset === 'headingLarge' ||
+    preset === 'headingMedium' ||
+    preset === 'headingSmall'
   ) {
     return italic ? $fontFamily.boldItalic : $fontFamily.bold;
   }
