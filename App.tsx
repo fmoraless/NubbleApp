@@ -40,7 +40,11 @@ function App(): React.JSX.Element {
           </Box>
 
           <Box>
-            <TextInput label="Contraseña" placeholder="Ingrese su contraseña" />
+            <TextInput
+              label="Contraseña"
+              placeholder="Ingrese su contraseña"
+              RightComponent={<Icon name="eyeOn" color="gray2" size={24} />}
+            />
           </Box>
           <Text color="primary" preset="paragraphSmall" bold mt="s8">
             Olvidé mi contraseña
