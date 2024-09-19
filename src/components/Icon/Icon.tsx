@@ -2,6 +2,8 @@ import React from 'react';
 import {View, Text} from 'react-native';
 import {EyeOnIcon} from '../../assets/icons/EyeOnIcon';
 import {EyeOffIcon} from '../../assets/icons/EyeOffIcon';
+import {ThemeColors} from '../../theme/theme';
+import {useAppTheme} from '../../hooks/useAppTheme';
 
 export interface IconBase {
   size?: number;
@@ -10,13 +12,15 @@ export interface IconBase {
 
 interface Props {
   name: IconName;
-  color?: string;
+  color?: ThemeColors;
+  size?: number;
 }
 
-export function Icon({name, color = '#000'}: Props) {
+export function Icon({name, color = 'backgroundContrast', size}: Props) {
+  const {colors} = useAppTheme();
   const SVGIcon = iconRegistry[name];
 
-  return <SVGIcon color={color} />;
+  return <SVGIcon color={colors[color]} size={size} />;
 }
 
 const iconRegistry = {

@@ -7,6 +7,7 @@
 
 import React from 'react';
 import {SafeAreaView, View} from 'react-native';
+import {TextInput} from './src/components/TextInput/TextInput';
 
 import {Colors} from 'react-native/Libraries/NewAppScreen';
 import {Text} from './src/components/Text/Text';
@@ -23,12 +24,30 @@ function App(): React.JSX.Element {
     <ThemeProvider theme={theme}>
       <SafeAreaView>
         <View style={{paddingHorizontal: 24}}>
-          <Text preset="headingLarge" italic>
-            Nubble App
+          <Text mb="s8" preset="headingLarge">
+            Hola
+          </Text>
+          <Text preset="paragraphLarge" mb="s40">
+            Ingrese su correo
           </Text>
 
-          <Icon name="eyeOn" size={30} />
-          <Icon name="eyeOff" color="red" size={30} />
+          <Box mb="s20">
+            <TextInput placeholder="Ingrese su correo" label="Correo" />
+          </Box>
+
+          <Box>
+            <TextInput
+              label="Contraseña"
+              placeholder="Ingrese su contraseña"
+              style={{borderWidth: 1, height: 50}}
+            />
+          </Box>
+          <Text color="primary" preset="paragraphSmall" bold mt="s8">
+            Olvidé mi contraseña
+          </Text>
+
+          <Button title="Entrar" marginTop="s48" />
+          <Button preset="outline" title="Crear cuenta" marginTop="s12" />
         </View>
       </SafeAreaView>
     </ThemeProvider>
