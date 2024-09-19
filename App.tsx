@@ -31,21 +31,20 @@ function App(): React.JSX.Element {
             Ingrese su correo
           </Text>
 
-          <Box mb="s20">
-            <TextInput
-              errorMessage="Error correo"
-              placeholder="Ingrese su correo"
-              label="Correo"
-            />
-          </Box>
+          <TextInput
+            errorMessage="Error correo"
+            placeholder="Ingrese su correo"
+            label="Correo"
+            boxProps={{mb: 's20'}}
+          />
 
-          <Box>
-            <TextInput
-              label="Contraseña"
-              placeholder="Ingrese su contraseña"
-              RightComponent={<Icon name="eyeOn" color="gray2" size={24} />}
-            />
-          </Box>
+          <TextInput
+            label="Contraseña"
+            placeholder="Ingrese su contraseña"
+            RightComponent={<Icon name="eyeOn" color="gray2" size={24} />}
+            boxProps={{mb: 's12'}}
+          />
+
           <Text color="primary" preset="paragraphSmall" bold mt="s8">
             Olvidé mi contraseña
           </Text>
