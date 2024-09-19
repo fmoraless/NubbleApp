@@ -36,11 +36,7 @@ function App(): React.JSX.Element {
           </Box>
 
           <Box>
-            <TextInput
-              label="Contraseña"
-              placeholder="Ingrese su contraseña"
-              style={{borderWidth: 1, height: 50}}
-            />
+            <TextInput label="Contraseña" placeholder="Ingrese su contraseña" />
           </Box>
           <Text color="primary" preset="paragraphSmall" bold mt="s8">
             Olvidé mi contraseña
