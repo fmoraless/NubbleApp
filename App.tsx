@@ -32,7 +32,11 @@ function App(): React.JSX.Element {
           </Text>
 
           <Box mb="s20">
-            <TextInput placeholder="Ingrese su correo" label="Correo" />
+            <TextInput
+              errorMessage="Error correo"
+              placeholder="Ingrese su correo"
+              label="Correo"
+            />
           </Box>
 
           <Box>
