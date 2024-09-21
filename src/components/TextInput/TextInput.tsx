@@ -38,7 +38,7 @@ export function TextInput({
     inputRef.current?.focus();
   }
   return (
-    <Box>
+    <Box {...boxProps}>
       <Pressable onPress={focusInput}>
         <Text preset="paragraphMedium" mb="s4">
           {label}
