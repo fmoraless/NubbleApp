@@ -19,12 +19,13 @@ import {EyeOnIcon} from './src/assets/icons/EyeOnIcon';
 import {Icon} from './src/components/Icon/Icon';
 import {LoginScreen} from './src/screens/auth/Login/LoginScreen';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
+import {SignUpScreen} from './src/screens/auth/SignUp/SignUpScreen';
 
 function App(): React.JSX.Element {
   return (
     <SafeAreaProvider>
       <ThemeProvider theme={theme}>
-        <LoginScreen />
+        <SignUpScreen />
       </ThemeProvider>
     </SafeAreaProvider>
   );
