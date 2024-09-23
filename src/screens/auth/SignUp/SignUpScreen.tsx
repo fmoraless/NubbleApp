@@ -1,5 +1,6 @@
 import {Button} from '../../../components/Button/Button';
 import {Icon} from '../../../components/Icon/Icon';
+import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
@@ -26,22 +27,15 @@ export function SignUpScreen() {
         label="Correo"
         boxProps={{mb: 's20'}}
       />
-      <TextInput
+      <PasswordInput
         label="Contraseña"
         placeholder="Ingrese su contraseña"
-        RightComponent={<Icon name="eyeOn" color="gray2" size={24} />}
-        boxProps={{mb: 's48'}}
+        boxProps={{mb: 's20'}}
       />
-      <TextInput
-        label="Contraseña"
-        placeholder="Ingrese su contraseña"
-        RightComponent={<Icon name="eyeOn" color="gray2" size={24} />}
-        boxProps={{mb: 's48'}}
-      />
-      <TextInput
-        label="Contraseña"
-        placeholder="Ingrese su contraseña"
-        RightComponent={<Icon name="eyeOn" color="gray2" size={24} />}
+
+      <PasswordInput
+        label="Confirmar contraseña"
+        placeholder="Repita su contraseña"
         boxProps={{mb: 's48'}}
       />
 
