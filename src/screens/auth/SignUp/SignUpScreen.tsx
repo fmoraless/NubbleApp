@@ -1,5 +1,4 @@
 import {Button} from '../../../components/Button/Button';
-import {Icon} from '../../../components/Icon/Icon';
 import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';

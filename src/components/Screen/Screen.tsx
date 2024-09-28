@@ -39,7 +39,7 @@ export function Screen({
           style={{paddingTop: top, paddingBottom: bottom}}>
           {canGoBack && (
             <Box mb="s24" flexDirection="row">
-              <Icon name="ArrowLefticon" color="primary" />
+              <Icon name="arrowLeft" color="primary" />
               <Text preset="paragraphMedium" semibold ml="s8">
                 Volver
               </Text>
