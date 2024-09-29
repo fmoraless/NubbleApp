@@ -8,9 +8,15 @@ import {RootStackParamList} from '../../../routes/Routes';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
-export function SignUpScreen(props: ScreenProps) {
+export function SignUpScreen({navigation}: ScreenProps) {
   const SubmitForm = () => {
-    // TODO: implementar submit form
+    navigation.navigate('SuccessScreen', {
+      title: 'Cuenta creada con éxito.',
+      description: '¡Bienvenido a la comunidad!',
+      icon: {
+        name: 'checkRound',
+      },
+    });
   };
   return (
     <Screen canGoBack scrollable>
