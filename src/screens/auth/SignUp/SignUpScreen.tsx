@@ -5,12 +5,14 @@ import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
 import {TextInput} from '../../../components/TextInput/TextInput';
 import {RootStackParamList} from '../../../routes/Routes';
+import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 export function SignUpScreen({navigation}: ScreenProps) {
+  const {reset} = useResetNavigationSuccess();
   const SubmitForm = () => {
-    navigation.navigate('SuccessScreen', {
+    reset({
       title: 'Cuenta creada con éxito.',
       description: '¡Bienvenido a la comunidad!',
       icon: {

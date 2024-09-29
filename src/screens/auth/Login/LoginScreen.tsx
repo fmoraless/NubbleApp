@@ -14,6 +14,12 @@ export function LoginScreen({navigation}: ScreenProps) {
     console.log('navigateToSignUpScreen');
     navigation.navigate('SignUpScreen');
   }
+
+  function navigateToResetPasswordScreen() {
+    console.log('navigateToResetPasswordScreen');
+    navigation.navigate('ForgotPasswordScreen');
+  }
+
   return (
     <Screen scrollable>
       <Text mb="s8" preset="headingLarge">
@@ -36,7 +42,12 @@ export function LoginScreen({navigation}: ScreenProps) {
         boxProps={{mb: 's12'}}
       />
 
-      <Text color="primary" preset="paragraphSmall" bold mt="s8">
+      <Text
+        onPress={navigateToResetPasswordScreen}
+        color="primary"
+        preset="paragraphSmall"
+        bold
+        mt="s8">
         Olvidé mi contraseña
       </Text>
 
