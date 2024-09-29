@@ -1,11 +1,17 @@
 import React from 'react';
-import {Box} from '../Box/Box';
-import {KeyboardAvoidingView, Platform, ScrollView} from 'react-native';
+import {Box, TouchableOpacityBox} from '../Box/Box';
+import {
+  KeyboardAvoidingView,
+  Platform,
+  ScrollView,
+  TouchableOpacity,
+} from 'react-native';
 import {useAppSafeArea} from '../../hooks/useAppSafeArea';
 import {Icon} from '../Icon/Icon';
 import {Text} from '../Text/Text';
 import {ScrollViewContainer, ViewContainer} from './components/ScreenContainer';
 import {useAppTheme} from '../../hooks/useAppTheme';
+import {useNavigation} from '@react-navigation/native';
 
 interface ScreenProps {
   children?: React.ReactNode;
@@ -20,6 +26,8 @@ export function Screen({
 }: ScreenProps) {
   const {top, bottom} = useAppSafeArea();
   const {colors} = useAppTheme();
+
+  const navigation = useNavigation();
 
   console.log({
     device: Platform.OS,
@@ -36,14 +44,20 @@ export function Screen({
       <Container backgroundColor={colors.background}>
         <Box
           paddingHorizontal="s24"
-          style={{paddingTop: top, paddingBottom: bottom}}>
+          style={{
+            paddingTop: top,
+            paddingBottom: bottom,
+          }}>
           {canGoBack && (
-            <Box mb="s24" flexDirection="row">
+            <TouchableOpacityBox
+              onPress={navigation.goBack}
+              mb="s24"
+              flexDirection="row">
               <Icon name="arrowLeft" color="primary" />
               <Text preset="paragraphMedium" semibold ml="s8">
                 Volver
               </Text>
-            </Box>
+            </TouchableOpacityBox>
           )}
           {children}
         </Box>
