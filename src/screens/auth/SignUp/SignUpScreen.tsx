@@ -1,12 +1,12 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {Controller, useForm} from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 import {Button} from '../../../components/Button/Button';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
 import {Screen} from '../../../components/Screen/Screen';
 import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
 import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
+import {FormTextInput} from '../../../components/Form/FormTextInput';
+import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
 
 type SignUpFormType = {
   username: string;
@@ -44,113 +44,55 @@ export function SignUpScreen({navigation}: ScreenProps) {
         Crear una cuenta
       </Text>
 
-      <Controller
+      <FormTextInput
         control={control}
         name="username"
         rules={{
           required: 'El nombre de usuario es requerido',
         }}
-        render={({field, fieldState}) => (
-          <TextInput
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-            placeholder="@"
-            label="Usuario"
-            boxProps={{mb: 's20'}}
-          />
-        )}
+        placeholder="@"
+        label="Usuario"
+        boxProps={{mb: 's20'}}
       />
 
-      <Controller
+      <FormTextInput
         control={control}
         name="fullName"
         rules={{
           required: 'El nombre de completo es requerido',
         }}
-        render={({field, fieldState}) => (
-          <TextInput
-            value={field.value}
-            onChangeText={field.onChange}
-            errorMessage={fieldState.error?.message}
-            placeholder="ej: Juan Pérez"
-            label="Nombre completo"
-            boxProps={{mb: 's20'}}
-          />
-        )}
+        autoCapitalize="words"
+        label="Nombre completo"
+        placeholder="ej: Juan Pérez"
+        boxProps={{mb: 's20'}}
       />
 
-      <Controller
+      <FormTextInput
         control={control}
         name="email"
         rules={{
-          required: 'Correo requerido',
+          required: 'Correo es requerido',
           pattern: {
             value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
             message: 'Correo inválido',
           },
         }}
-        render={({field, fieldState}) => (
-          <TextInput
-            errorMessage={fieldState.error?.message}
-            value={field.value}
-            onChangeText={field.onChange}
-            keyboardType="email-address"
-            placeholder="Ingrese su correo"
-            label="Correo"
-            boxProps={{mb: 's20'}}
-          />
-        )}
+        keyboardType="email-address"
+        label="Correo"
+        placeholder="ej: correo@example.com"
+        boxProps={{mb: 's20'}}
       />
 
-      <Controller
+      <FormPasswordInput
         control={control}
         name="password"
         rules={{
-          required: 'Contraseña requerida',
-          minLength: {
-            value: 8,
-            message: 'Contraseña debe tener al menos 8 caracteres',
-          },
+          required: 'El nombre de usuario es requerido',
         }}
-        render={({field, fieldState}) => (
-          <PasswordInput
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-            onChangeText={field.onChange}
-            label="Contraseña"
-            placeholder="Ingrese su contraseña"
-            boxProps={{mb: 's20'}}
-          />
-        )}
+        label="Contraseña"
+        placeholder="Ingrese su contraseña"
+        boxProps={{mb: 's20'}}
       />
-
-      <Controller
-        control={control}
-        name="password"
-        rules={{
-          required: 'Contraseña requerida',
-          minLength: {
-            value: 8,
-            message: 'Contraseña debe tener al menos 8 caracteres',
-          },
-        }}
-        render={({field, fieldState}) => (
-          <PasswordInput
-            value={field.value}
-            errorMessage={fieldState.error?.message}
-            onChangeText={field.onChange}
-            label="Contraseña"
-            placeholder="Ingrese su contraseña"
-            boxProps={{mb: 's48'}}
-          />
-        )}
-      />
-      {/* <PasswordInput
-        label="Confirmar contraseña"
-        placeholder="Repita su contraseña"
-        boxProps={{mb: 's48'}}
-      /> */}
 
       <Button
         disabled={!formState.isValid}
