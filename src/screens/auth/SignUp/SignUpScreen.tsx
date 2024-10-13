@@ -7,19 +7,15 @@ import {RootStackParamList} from '../../../routes/Routes';
 import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
 import {FormTextInput} from '../../../components/Form/FormTextInput';
 import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
-
-type SignUpFormType = {
-  username: string;
-  fullName: string;
-  email: string;
-  password: string;
-};
+import {SignUpSchema, signUpSchema} from './signUpSchema';
+import {zodResolver} from '@hookform/resolvers/zod';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 export function SignUpScreen({navigation}: ScreenProps) {
   const {reset} = useResetNavigationSuccess();
   const {control, formState, handleSubmit} = useForm<SignUpFormType>({
+    resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
       fullName: '',
@@ -47,9 +43,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormTextInput
         control={control}
         name="username"
-        rules={{
-          required: 'El nombre de usuario es requerido',
-        }}
         placeholder="@"
         label="Usuario"
         boxProps={{mb: 's20'}}
@@ -58,9 +51,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormTextInput
         control={control}
         name="fullName"
-        rules={{
-          required: 'El nombre de completo es requerido',
-        }}
         autoCapitalize="words"
         label="Nombre completo"
         placeholder="ej: Juan Pérez"
@@ -70,13 +60,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormTextInput
         control={control}
         name="email"
-        rules={{
-          required: 'Correo es requerido',
-          pattern: {
-            value: /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/,
-            message: 'Correo inválido',
-          },
-        }}
         keyboardType="email-address"
         label="Correo"
         placeholder="ej: correo@example.com"
@@ -86,9 +69,6 @@ export function SignUpScreen({navigation}: ScreenProps) {
       <FormPasswordInput
         control={control}
         name="password"
-        rules={{
-          required: 'El nombre de usuario es requerido',
-        }}
         label="Contraseña"
         placeholder="Ingrese su contraseña"
         boxProps={{mb: 's20'}}
