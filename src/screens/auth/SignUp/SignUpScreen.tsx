@@ -14,7 +14,7 @@ type ScreenProps = NativeStackScreenProps<RootStackParamList, 'SignUpScreen'>;
 
 export function SignUpScreen({navigation}: ScreenProps) {
   const {reset} = useResetNavigationSuccess();
-  const {control, formState, handleSubmit} = useForm<SignUpFormType>({
+  const {control, formState, handleSubmit} = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues: {
       username: '',
@@ -24,7 +24,7 @@ export function SignUpScreen({navigation}: ScreenProps) {
     },
     mode: 'onChange',
   });
-  const SubmitForm = (formValues: SignUpFormType) => {
+  const SubmitForm = (formValues: SignUpSchema) => {
     console.log('formValues', formValues);
     /* reset({
       title: 'Cuenta creada con éxito.',
