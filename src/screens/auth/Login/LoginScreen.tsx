@@ -1,32 +1,22 @@
 import {useEffect, useState} from 'react';
-import {Alert, SafeAreaView, View} from 'react-native';
+import {Alert} from 'react-native';
 import {useForm} from 'react-hook-form';
-import {Text} from '../../../components/Text/Text';
-import {TextInput} from '../../../components/TextInput/TextInput';
-import {Button} from '../../../components/Button/Button';
-import {Screen} from '../../../components/Screen/Screen';
-import {PasswordInput} from '../../../components/PasswordInput/PasswordInput';
+import {
+  Text,
+  Screen,
+  Button,
+  FormTextInput,
+  FormPasswordInput,
+} from '@components';
+
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '../../../routes/Routes';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {loginSchema, LoginSchema} from './loginSchema';
-import {FormTextInput} from '../../../components/Form/FormTextInput';
-import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;
 
 export function LoginScreen({navigation}: ScreenProps) {
-  /*  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
-  const {emailErrorMessage, setEmailErrorMessage} = useState('');
-  const {passwordErrorMessage, setPasswordErrorMessage} = useState('');
-
-  useEffect(() => {
-    const isValidEmail = /^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/.test(email);
-    setEmailErrorMessage(isValidEmail ? '' : 'Correo inválido');
-  }, [email]); */
-
   const {control, formState, handleSubmit} = useForm<LoginSchema>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
