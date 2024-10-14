@@ -1,11 +1,12 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+
 import {Svg, Path, Circle} from 'react-native-svg';
+
 import {IconBase} from '../../components/Icon/Icon';
 
 export function BellOnIcon({size = 20, color = 'black'}: IconBase) {
   return (
-    <Svg width={30} height={30} viewBox="0 0 20 20" fill="none">
+    <Svg width={size} height={size} viewBox="0 0 20 20" fill="none">
       <Path
         fillRule="evenodd"
         clipRule="evenodd"

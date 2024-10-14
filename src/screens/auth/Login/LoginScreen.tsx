@@ -1,6 +1,10 @@
-import {useEffect, useState} from 'react';
+import React from 'react';
 import {Alert} from 'react-native';
+
+import {zodResolver} from '@hookform/resolvers/zod';
+import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
+
 import {
   Text,
   Screen,
@@ -8,10 +12,8 @@ import {
   FormTextInput,
   FormPasswordInput,
 } from '@components';
-
-import type {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParamList} from '@routes';
-import {zodResolver} from '@hookform/resolvers/zod';
+
 import {loginSchema, LoginSchema} from './loginSchema';
 
 type ScreenProps = NativeStackScreenProps<RootStackParamList, 'LoginScreen'>;

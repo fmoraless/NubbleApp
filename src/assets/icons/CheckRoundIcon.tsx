@@ -1,6 +1,7 @@
-import {StyleSheet, Text, View} from 'react-native';
 import React from 'react';
+
 import {Svg, Path, Circle} from 'react-native-svg';
+
 import {IconBase} from '../../components/Icon/Icon';
 import {palette} from '../../theme/theme';
 
