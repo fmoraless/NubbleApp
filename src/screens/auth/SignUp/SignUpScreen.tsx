@@ -1,12 +1,16 @@
 import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {useForm} from 'react-hook-form';
-import {Button} from '../../../components/Button/Button';
-import {Screen} from '../../../components/Screen/Screen';
-import {Text} from '../../../components/Text/Text';
-import {RootStackParamList} from '../../../routes/Routes';
-import {useResetNavigationSuccess} from '../../../hooks/useResetNavigationSuccess';
-import {FormTextInput} from '../../../components/Form/FormTextInput';
-import {FormPasswordInput} from '../../../components/Form/FormPasswordInput';
+import {
+  Button,
+  FormTextInput,
+  FormPasswordInput,
+  Screen,
+  Text,
+} from '@components';
+
+import {useResetNavigationSuccess} from '@hooks';
+import {RootStackParamList} from '@routes';
+
 import {SignUpSchema, signUpSchema} from './signUpSchema';
 import {zodResolver} from '@hookform/resolvers/zod';
 
@@ -24,15 +28,16 @@ export function SignUpScreen({navigation}: ScreenProps) {
     },
     mode: 'onChange',
   });
-  const SubmitForm = (formValues: SignUpSchema) => {
+  const submitForm = (formValues: SignUpSchema) => {
     console.log('formValues', formValues);
-    /* reset({
+    reset({
       title: 'Cuenta creada con éxito.',
       description: '¡Bienvenido a la comunidad!',
       icon: {
         name: 'checkRound',
+        color: 'success',
       },
-    }); */
+    });
   };
   return (
     <Screen canGoBack scrollable>
@@ -76,7 +81,7 @@ export function SignUpScreen({navigation}: ScreenProps) {
 
       <Button
         disabled={!formState.isValid}
-        onPress={() => handleSubmit(SubmitForm)}
+        onPress={handleSubmit(submitForm)}
         title="Crear una cuenta"
       />
     </Screen>

@@ -1,11 +1,14 @@
 import {useTheme} from '@shopify/restyle';
 import React from 'react';
-import {Text} from '../Text/Text';
 
-import {TouchableOpacityBox, TouchableOpacityBoxProps} from '../Box/Box';
-import {ThemeColors} from '../../theme/theme';
+import {
+  ActivityIndicator,
+  TouchableOpacityBox,
+  TouchableOpacityBoxProps,
+  Text,
+} from '@components';
+
 import {buttonPresets} from './buttonPresets';
-import {ActivityIndicator} from '../ActivityIndicator/ActivityIndicator';
 
 /**
  * UI

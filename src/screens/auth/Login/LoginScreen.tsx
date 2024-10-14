@@ -10,7 +10,7 @@ import {
 } from '@components';
 
 import type {NativeStackScreenProps} from '@react-navigation/native-stack';
-import {RootStackParamList} from '../../../routes/Routes';
+import {RootStackParamList} from '@routes';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {loginSchema, LoginSchema} from './loginSchema';
 
