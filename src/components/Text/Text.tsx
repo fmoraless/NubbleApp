@@ -1,6 +1,8 @@
 import React from 'react';
 import {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   Text as RNText,
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   TextProps as RNTextProps,
   TextStyle,
 } from 'react-native';

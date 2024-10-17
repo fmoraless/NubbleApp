@@ -1,7 +1,5 @@
 import React from 'react';
 
-import {useTheme} from '@shopify/restyle';
-
 import {
   ActivityIndicator,
   TouchableOpacityBox,
