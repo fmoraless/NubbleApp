@@ -3,14 +3,20 @@ import React from 'react';
 import {Button, Screen, Text} from '@components';
 import {AppScreenProps} from '@routes';
 
-export const SettingsScreen = (
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  props: AppScreenProps<'SettingsScreen'>,
-) => {
+export const SettingsScreen = ({
+  navigation,
+}: AppScreenProps<'SettingsScreen'>) => {
   return (
     <Screen canGoBack>
       <Text preset="headingLarge">Settings Screen</Text>
-      <Button title="Home" onPress={() => {}} />
+      <Button
+        title="New Post"
+        onPress={() =>
+          navigation.navigate('AppTabNavigator', {
+            screen: 'NewPostScreen',
+          })
+        }
+      />
     </Screen>
   );
 };
