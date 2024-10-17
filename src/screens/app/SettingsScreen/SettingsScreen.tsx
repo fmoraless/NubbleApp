@@ -1,8 +1,7 @@
 import React from 'react';
 
-import {AppScreenProps} from 'src/routes/navigationType';
-
 import {Button, Screen, Text} from '@components';
+import {AppScreenProps} from '@routes';
 
 export const SettingsScreen = (
   // eslint-disable-next-line @typescript-eslint/no-unused-vars
