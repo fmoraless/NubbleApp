@@ -1,21 +1,25 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 
-import {Button, Screen, Text} from '@components';
+import {postService} from '@domain';
+
+import {Screen, Text} from '@components';
 import {AppTabScreenProps} from '@routes';
 
+import {Post} from '../../../domain/Post/types';
+
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  const [postList, setPostList] = useState<Post[]>([]);
+  useEffect(() => {
+    postService.getList().then(list => console.log(list));
+  }, []);
+
   return (
     <Screen>
-      <Text preset="headingLarge">Home Screen</Text>
-      <Button
-        title="Settings"
-        onPress={() => navigation.navigate('SettingsScreen')}
-      />
-      <Button
-        mt="s12"
-        title="Favorite"
-        onPress={() => navigation.navigate('FavoriteScreen')}
-      />
+      {postList.map(post => (
+        <Text key={post.id}>{post.text}</Text>
+      ))}
     </Screen>
   );
 };
