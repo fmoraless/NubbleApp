@@ -6,7 +6,7 @@ import {postService} from '@domain';
 import {PostItem, Screen} from '@components';
 import {AppTabScreenProps} from '@routes';
 
-import {Post} from '../../../domain/Post/types';
+import {Post} from '../../../domain/Post/postTypes';
 
 import {HomeHeader} from './components/HomeHeader';
 

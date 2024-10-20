@@ -1,7 +1,8 @@
-import {postListMock} from './postListMock';
-import {Post} from './types';
+import {PageAPI} from '@api';
 
-async function getList(): Promise<Post[]> {
+import {PostAPI} from './postTypes';
+
+async function getList(): Promise<PageAPI<PostAPI>> {
   let headerList = {
     Authorization:
       'Bearer Mg.tuL8nvtK3BMBn17NRBcyT5sapm3q1X13b2hgebQWkF8kKZ9eYrzH68Nz7d3g',
@@ -11,10 +12,10 @@ async function getList(): Promise<Post[]> {
     method: 'GET',
     headers: headerList,
   });
-  //TODO: simular una llamada a una API con setTimeout
-  let data = await response.json();
-  console.log(data);
-  return postListMock;
+
+  let data: PageAPI<PostAPI> = await response.json();
+
+  return data;
 }
 
 export const postApi = {
