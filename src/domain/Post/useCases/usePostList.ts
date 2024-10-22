@@ -7,17 +7,22 @@ export function usePostList() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<boolean | null>(null);
   const [page, setPage] = useState(1);
+  const [hasNextPage, setHasNextPage] = useState(true);
 
   async function fetchInitialData() {
     try {
       setError(null);
       setLoading(true);
-      const list = await postService.getList(1);
-      setPostList(list);
-      //TODO: validar si hay mas páginas
-      setPage(2);
-    } catch (er) {
-      console.log('Error:', error);
+      const {data, meta} = await postService.getList(1);
+      setPostList(data);
+      if (meta.hasNextPage) {
+        setPage(2);
+        setHasNextPage(true);
+      } else {
+        setHasNextPage(false);
+      }
+    } catch (err) {
+      console.log('Error:', err);
       setError(true);
     } finally {
       setLoading(false);
@@ -25,14 +30,19 @@ export function usePostList() {
   }
 
   async function fetchNextPage() {
-    if (loading) {
+    if (loading || !hasNextPage) {
       return;
     }
     try {
       setLoading(true);
-      const list = await postService.getList(page);
-      setPostList(prev => [...prev, ...list]);
-      setPage(prev => prev + 1);
+      const {data, meta} = await postService.getList(page);
+      setPostList(prev => [...prev, ...data]);
+
+      if (meta.hasNextPage) {
+        setPage(prev => prev + 1);
+      } else {
+        setHasNextPage(false);
+      }
     } catch (er) {
       console.log('Error:', error);
       setError(true);
@@ -43,7 +53,6 @@ export function usePostList() {
 
   useEffect(() => {
     fetchInitialData();
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return {
