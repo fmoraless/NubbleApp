@@ -8,7 +8,26 @@ export function usePostList() {
   const [error, setError] = useState<boolean | null>(null);
   const [page, setPage] = useState(1);
 
-  async function fetchData() {
+  async function fetchInitialData() {
+    try {
+      setError(null);
+      setLoading(true);
+      const list = await postService.getList(1);
+      setPostList(list);
+      //TODO: validar si hay mas páginas
+      setPage(2);
+    } catch (er) {
+      console.log('Error:', error);
+      setError(true);
+    } finally {
+      setLoading(false);
+    }
+  }
+
+  async function fetchNextPage() {
+    if (loading) {
+      return;
+    }
     try {
       setLoading(true);
       const list = await postService.getList(page);
@@ -16,20 +35,14 @@ export function usePostList() {
       setPage(prev => prev + 1);
     } catch (er) {
       console.log('Error:', error);
-      setError(error);
+      setError(true);
     } finally {
       setLoading(false);
     }
   }
 
-  function fetchNextPage() {
-    if (!loading) {
-      fetchData();
-    }
-  }
-
   useEffect(() => {
-    fetchData();
+    fetchInitialData();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
@@ -37,7 +50,7 @@ export function usePostList() {
     postList,
     error,
     loading,
-    refetch: fetchData,
+    refresh: fetchInitialData,
     fetchNextPage,
   };
 }
