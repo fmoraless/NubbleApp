@@ -20,7 +20,13 @@ import {HomeHeader} from './components/HomeHeader';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const HomeScreen = ({navigation}: AppTabScreenProps<'HomeScreen'>) => {
-  const {postList, error, loading, refresh, fetchNextPage} = usePostList();
+  const {
+    list: postList,
+    error,
+    loading,
+    refresh,
+    fetchNextPage,
+  } = usePostList();
   const flatListRef = React.useRef<FlatList<Post>>(null);
   useScrollToTop(flatListRef);
 
