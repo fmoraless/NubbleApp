@@ -15,8 +15,8 @@ export interface PostCommentAPI {
   message: string; // "Soleo temporibus quae alias subnecto alo studio pariatur enim.",
   user_id: number; //9,
   post_id: number; //1,
-  createdAt: string; //"2024-10-21T07:46:38.000-03:00",
-  updatedAt: string; //"2024-10-22T20:34:59.382-03:00",
+  created_at: string; //"2024-10-21T07:46:38.000-03:00",
+  updated_at: string; //"2024-10-22T20:34:59.382-03:00",
   user: {
     id: number; //9,
     first_name: string; // "Carla",
