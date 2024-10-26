@@ -19,12 +19,10 @@ export function usePaginatedList<Data>(
       setList(data);
       if (meta.hasNextPage) {
         setPage(2);
-        setHasNextPage(true);
       } else {
         setHasNextPage(false);
       }
-    } catch (err) {
-      console.log('Error:', err);
+    } catch (er) {
       setError(true);
     } finally {
       setLoading(false);
@@ -39,14 +37,12 @@ export function usePaginatedList<Data>(
       setLoading(true);
       const {data, meta} = await getList(page);
       setList(prev => [...prev, ...data]);
-
       if (meta.hasNextPage) {
         setPage(prev => prev + 1);
       } else {
         setHasNextPage(false);
       }
     } catch (er) {
-      console.log('Error:', error);
       setError(true);
     } finally {
       setLoading(false);

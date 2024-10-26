@@ -1,13 +1,16 @@
 import React from 'react';
 
+import {usePostCommentList} from 'src/domain/PostComment/useCases/usePostCommentList';
+
 import {Box, Screen, Text} from '@components';
 import {AppScreenProps} from '@routes';
 
-export const PostCommentScreen = ({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+export function PostCommentScreen({
   route,
-}: AppScreenProps<'PostCommentScreen'>) => {
-  //route.params
+}: AppScreenProps<'PostCommentScreen'>) {
+  const postId = route.params.postId;
+
+  usePostCommentList(postId);
   return (
     <Screen title="Comentarios" canGoBack>
       <Box>
@@ -15,4 +18,4 @@ export const PostCommentScreen = ({
       </Box>
     </Screen>
   );
-};
+}
