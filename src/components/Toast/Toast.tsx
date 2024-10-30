@@ -12,15 +12,15 @@ import {Text} from '../Text/Text';
 const MAX_WIDTH = Dimensions.get('screen').width * 0.9;
 
 export function Toast() {
-  const {toast, hiddentToast} = useToast();
+  const {toast, hideToast: hideToast} = useToast();
 
   useEffect(() => {
     if (toast) {
       setTimeout(() => {
-        hiddentToast();
+        hideToast();
       }, 2000);
     }
-  }, [hiddentToast, toast]);
+  }, [hideToast, toast]);
 
   if (!toast) {
     return null;
