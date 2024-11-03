@@ -18,7 +18,9 @@ export type AppTabBottomTabParamList = {
   HomeScreen: undefined;
   NewPostScreen: undefined;
   FavoriteScreen: undefined;
-  MyProfileScreen: undefined;
+  MyProfileScreen: {
+    userId: number;
+  };
 };
 const Tab = createBottomTabNavigator<AppTabBottomTabParamList>();
 

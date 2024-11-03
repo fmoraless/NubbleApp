@@ -22,7 +22,16 @@ export interface PostAPI {
   is_activated: boolean;
   created_at: Date;
   updated_at: Date;
-  user: User;
+  user: {
+    id: number; // 1;
+    first_name: string; // 'Maria';
+    last_name: string; // 'Julia';
+    username: string; // 'mariajulia';
+    email: string; // 'mariajulia@coffstack.com';
+    profile_url: string; // 'https://nubble-development.s3.sa-east-1.amazonaws.com/backend-integration/1-maria.png';
+    is_online: boolean; // false;
+    full_name: string; // 'Maria Julia';
+  };
   status: string; // 'published'
   meta: Meta;
 }
@@ -31,15 +40,4 @@ export interface Meta {
   like_count: string; // '9'
   favorite_count: string; // '1'
   comments_count: string; // '2'
-}
-
-export interface User {
-  id: number;
-  first_name: string;
-  last_name: string;
-  username: string;
-  email: string;
-  profile_url: string;
-  is_online: boolean;
-  full_name: string;
 }
