@@ -17,6 +17,10 @@ import {Toast} from '@components';
 import {Router} from './src/routes/Routes';
 import {theme} from './src/theme/theme';
 
+if (__DEV__) {
+  require('./ReactotronConfig');
+}
+
 const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
