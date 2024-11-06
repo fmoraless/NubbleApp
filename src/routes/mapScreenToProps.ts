@@ -33,7 +33,7 @@ export const mapScreenProps: Record<
     },
   },
   MyProfileScreen: {
-    label: 'Mi Perfil',
+    label: 'Mi perfil',
     icon: {
       focused: 'profileFill',
       unfocused: 'profile',

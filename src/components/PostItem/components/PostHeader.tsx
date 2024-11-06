@@ -8,10 +8,11 @@ import {Box, Text, ProfileAvatar} from '@components';
 
 type Props = Pick<Post, 'author'>;
 export function PostHeader({author}: Props) {
+  console.log('PostHeader::Author', author);
   const navigation = useNavigation();
 
   function navigateToProfile() {
-    navigation.navigate('MyProfileScreen', {userId: author.id});
+    navigation.navigate('ProfileScreen', {userId: author.id});
   }
 
   return (
