@@ -11,7 +11,11 @@ if (__DEV__) {
 import React from 'react';
 
 //import {ToastProvider} from '@services';
-import {AuthCredentialsProvider} from '@services';
+import {
+  AuthCredentialsProvider,
+  initializeStorage,
+  MMKVStorage,
+} from '@services';
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -22,6 +26,8 @@ import {Router} from './src/routes/Routes';
 import {theme} from './src/theme/theme';
 
 const queryClient = new QueryClient();
+
+initializeStorage(MMKVStorage);
 
 function App(): React.JSX.Element {
   return (
