@@ -1,6 +1,6 @@
 import React from 'react';
 
-import {useAuthSignUp} from '@domain';
+import {useAuthIsUserNameAvailable, useAuthSignUp} from '@domain';
 import {zodResolver} from '@hookform/resolvers/zod';
 import {useForm} from 'react-hook-form';
 
@@ -10,6 +10,7 @@ import {
   FormPasswordInput,
   Screen,
   Text,
+  ActivityIndicator,
 } from '@components';
 import {useResetNavigationSuccess} from '@hooks';
 import {AuthScreenProps, AuthStackParamList} from '@routes';
@@ -41,7 +42,7 @@ export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
       reset(resetParam);
     },
   });
-  const {control, formState, handleSubmit} = useForm<SignUpSchema>({
+  const {control, formState, handleSubmit, watch} = useForm<SignUpSchema>({
     resolver: zodResolver(signUpSchema),
     defaultValues,
     mode: 'onChange',
@@ -50,6 +51,10 @@ export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
     console.log(formValues);
     signUp(formValues);
   };
+
+  const username = watch('username');
+  const userNameQuery = useAuthIsUserNameAvailable({username});
+
   return (
     <Screen canGoBack scrollable>
       <Text preset="headingLarge" mb="s32">
@@ -62,6 +67,11 @@ export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
         placeholder="@"
         label="Usuario"
         boxProps={{mb: 's20'}}
+        RightComponent={
+          userNameQuery.isFetching ? (
+            <ActivityIndicator size="small" />
+          ) : undefined
+        }
       />
 
       <FormTextInput
