@@ -42,18 +42,24 @@ export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
       reset(resetParam);
     },
   });
-  const {control, formState, handleSubmit, watch} = useForm<SignUpSchema>({
-    resolver: zodResolver(signUpSchema),
-    defaultValues,
-    mode: 'onChange',
-  });
+  const {control, formState, handleSubmit, watch, getFieldState} =
+    useForm<SignUpSchema>({
+      resolver: zodResolver(signUpSchema),
+      defaultValues,
+      mode: 'onChange',
+    });
   const submitForm = (formValues: SignUpSchema) => {
     console.log(formValues);
     signUp(formValues);
   };
 
   const username = watch('username');
-  const userNameQuery = useAuthIsUserNameAvailable({username});
+  const usernameState = getFieldState('username');
+  const usernameIsValid = !usernameState.invalid && usernameState.isDirty;
+  const userNameQuery = useAuthIsUserNameAvailable({
+    username,
+    enabled: usernameIsValid,
+  });
 
   return (
     <Screen canGoBack scrollable>
@@ -66,6 +72,9 @@ export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
         name="username"
         placeholder="@"
         label="Usuario"
+        errorMessage={
+          userNameQuery.isUnavailable ? 'El usuario ya está en uso' : undefined
+        }
         boxProps={{mb: 's20'}}
         RightComponent={
           userNameQuery.isFetching ? (
@@ -111,7 +120,11 @@ export function SignUpScreen({navigation}: AuthScreenProps<'SignUpScreen'>) {
 
       <Button
         loading={isLoading}
-        disabled={!formState.isValid}
+        disabled={
+          !formState.isValid ||
+          userNameQuery.isFetching ||
+          userNameQuery.isUnavailable
+        }
         onPress={handleSubmit(submitForm)}
         title="Crear una cuenta"
       />
