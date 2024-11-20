@@ -1,22 +1,38 @@
 import React from 'react';
 
+import {useAuthRequestNewPassword} from '@domain';
 import {zodResolver} from '@hookform/resolvers/zod';
+import {useToastService} from '@services';
 import {useForm} from 'react-hook-form';
 
 import {Button, FormTextInput, Text, Screen} from '@components';
 import {useResetNavigationSuccess} from '@hooks';
-import {AuthScreenProps} from '@routes';
+import {AuthScreenProps, AuthStackParamList} from '@routes';
 
 import {
   ForgotPasswordSchema,
   forgotPasswordSchema,
 } from './forgotPasswordSchema';
 
-export function ForgotPasswordScreen({
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  navigation,
-}: AuthScreenProps<'ForgotPasswordScreen'>) {
+const resetParam: AuthStackParamList['SuccessScreen'] = {
+  title: 'Correo enviado',
+  description:
+    'Hemos enviado un enlace a su correo para recuperar su contraseña.',
+  icon: {
+    name: 'checkRound',
+    color: 'success',
+  },
+};
+
+export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>) {
   const {reset} = useResetNavigationSuccess();
+
+  const {showToast} = useToastService();
+
+  const {requestNewPassword, isLoading} = useAuthRequestNewPassword({
+    onSuccess: () => reset(resetParam),
+    onError: message => showToast({message, type: 'error'}),
+  });
 
   const {control, formState, handleSubmit} = useForm<ForgotPasswordSchema>({
     resolver: zodResolver(forgotPasswordSchema),
@@ -26,18 +42,11 @@ export function ForgotPasswordScreen({
     mode: 'onChange',
   });
 
-  function submitForm() {
+  function submitForm(values: ForgotPasswordSchema) {
     console.log('submitForm');
 
-    reset({
-      title: 'Correo enviado',
-      description:
-        'Hemos enviado un enlace a su correo para recuperar su contraseña.',
-      icon: {
-        name: 'checkRound',
-        color: 'success',
-      },
-    });
+    requestNewPassword(values.email);
+
     /* navigation.navigate('SuccessScreen', {
       title: 'Correo enviado',
       description:
@@ -60,12 +69,14 @@ export function ForgotPasswordScreen({
       <FormTextInput
         control={control}
         keyboardType="email-address"
+        autoCapitalize="none"
         name="email"
         label="Correo"
         placeholder="ej: correo@examaploe.com"
         boxProps={{mb: 's40'}}
       />
       <Button
+        loading={isLoading}
         disabled={!formState.isValid}
         onPress={handleSubmit(submitForm)}
         title="Recuperar contraseña"
