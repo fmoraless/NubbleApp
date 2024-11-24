@@ -24,7 +24,7 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
-        console.log(route.name);
+        console.log(route.key);
 
         const tabItem =
           mapScreenProps[route.name as keyof AppTabBottomTabParamList];
@@ -56,6 +56,7 @@ export function AppTabBar({state, descriptors, navigation}: BottomTabBarProps) {
 
         return (
           <TouchableOpacityBox
+            key={route.name}
             {...$itemWrapper}
             accessibilityState={isFocused ? {selected: true} : {}}
             accessibilityLabel={options.tabBarAccessibilityLabel}
