@@ -2,7 +2,6 @@ import {api} from '@api';
 
 import {UserAPI} from '../User';
 
-import {AuthCredentialsAPI} from './authTypes';
 import {
   AuthCredentialsAPI,
   FieldIsAvailableAPI,

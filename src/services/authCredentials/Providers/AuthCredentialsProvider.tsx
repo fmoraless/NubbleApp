@@ -1,6 +1,7 @@
 import React, {useEffect} from 'react';
 import {createContext, useState} from 'react';
 
+import {api} from '@api';
 import {AuthCredentials, authService} from '@domain';
 
 import {authCredentialsStorage} from '../authCredentialsStorage';
@@ -23,6 +24,31 @@ export function AuthCredentialsProvider({
 
   useEffect(() => {
     startAuthCredentials();
+  }, []);
+
+  useEffect(() => {
+    const iterceptor = api.interceptors.response.use(
+      response => response,
+      async responseError => {
+        if (responseError.response.status === 401) {
+          if (!authCredentials?.refreshToken) {
+            removeCredentials();
+            return Promise.reject(responseError);
+          }
+          const failedRequest = responseError.config;
+
+          const newAtuhCredentials =
+            await authService.authenticateByRefreshToken(
+              authCredentials?.refreshToken,
+            );
+          saveCredentials(newAtuhCredentials);
+          failedRequest.headers.Authorization = `Bearer ${newAtuhCredentials.token}`;
+        }
+      },
+    );
+    // Remove interceptor listener when component unmounts
+    return () => api.interceptors.response.eject(iterceptor);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   async function startAuthCredentials() {
