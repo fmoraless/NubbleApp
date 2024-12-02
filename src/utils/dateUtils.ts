@@ -1,4 +1,4 @@
-import {parseISO, differenceInSeconds, format} from 'date-fns';
+import {parseISO, differenceInSeconds, format, formatDate} from 'date-fns';
 
 function formatRelative(dateISO: string): string {
   const date = parseISO(dateISO);
@@ -6,13 +6,17 @@ function formatRelative(dateISO: string): string {
 
   const diffInSeconds = differenceInSeconds(now, date);
 
+  if (diffInSeconds < 0) {
+    return format(date, 'dd/MM/yyyy');
+  }
+
   if (diffInSeconds < 60) {
     return `${diffInSeconds} s`;
   }
 
   const diffInMinutes = Math.round(diffInSeconds / 60);
   if (diffInMinutes < 60) {
-    return `${diffInMinutes} min`;
+    return `${diffInMinutes} m`;
   }
 
   const diffInHours = Math.floor(diffInMinutes / 60);
@@ -32,7 +36,7 @@ function formatRelative(dateISO: string): string {
 
   const diffInMonths = Math.floor(diffInDays / 30);
   if (diffInMonths < 12) {
-    return `${diffInMonths} m`;
+    return `${diffInMonths} mes`;
   }
 
   return format(date, 'dd/MM/yyyy');
