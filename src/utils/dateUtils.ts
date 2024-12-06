@@ -1,4 +1,4 @@
-import {parseISO, differenceInSeconds, format, formatDate} from 'date-fns';
+import {parseISO, differenceInSeconds, format} from 'date-fns';
 
 function formatRelative(dateISO: string): string {
   const date = parseISO(dateISO);
