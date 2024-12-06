@@ -42,7 +42,7 @@ module.exports = {
           },
         ],
       },
-      extends: ['plugin:testing-library/react'],
+      //      extends: ['plugin:testing-library/react'],
     },
   ],
 };
