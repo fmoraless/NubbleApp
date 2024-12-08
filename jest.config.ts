@@ -9,6 +9,7 @@ const config: Config = {
   transformIgnorePatterns: [
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-safe-area-context|@react-navigation)/)',
   ],
+  modulePathIgnorePatterns: ['.*/mockedData/.*'],
 };
 
 export default config;
