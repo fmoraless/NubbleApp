@@ -6,7 +6,7 @@ import {render, RenderOptions} from '@testing-library/react-native';
 
 import {theme} from '@theme';
 
-const AllProviders = ({children}: {children: React.ReactNode}) => {
+export const AllTheProviders = ({children}: {children: React.ReactNode}) => {
   return (
     <ThemeProvider theme={theme}>
       <NavigationContainer>{children}</NavigationContainer>
@@ -18,7 +18,7 @@ function customRender<T = unknown>(
   component: React.ReactElement<T>,
   options?: Omit<RenderOptions, 'wrapper'>,
 ) {
-  return render(component, {wrapper: AllProviders, ...options});
+  return render(component, {wrapper: AllTheProviders, ...options});
 }
 
 export * from '@testing-library/react-native';
