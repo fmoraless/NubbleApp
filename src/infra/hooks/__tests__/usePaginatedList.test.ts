@@ -6,7 +6,7 @@ import {usePaginatedList} from '../usePaginatedList';
 const page1 = ['item1', 'item2', 'item3'];
 const page2 = ['item4', 'item5', 'item6'];
 
-function gestList(page: number) {
+async function getList(page: number) {
   const data = page === 1 ? page1 : page2;
 
   const meta: MetaDataPage = {
@@ -22,9 +22,11 @@ function gestList(page: number) {
   return Promise.resolve({data, meta});
 }
 
+const mockedGetList = jest.fn(getList);
+
 describe('usePaginatedList', () => {
   it('returns all pages together and stops fetching if there are no more pages', async () => {
-    const {result} = renderHook(() => usePaginatedList(['key'], gestList));
+    const {result} = renderHook(() => usePaginatedList(['key'], mockedGetList));
 
     await waitFor(() => expect(result.current.list).toStrictEqual(page1));
 
@@ -33,5 +35,16 @@ describe('usePaginatedList', () => {
     await waitFor(() =>
       expect(result.current.list).toStrictEqual([...page1, ...page2]),
     );
+
+    result.current.fetchNextPage();
+
+    await waitFor(() =>
+      expect(result.current.list).toStrictEqual([...page1, ...page2]),
+    );
+
+    expect(mockedGetList).toHaveBeenCalledTimes(2);
+
+    // mantener lista [...pate1, ...page2]
+    // getList()
   });
 });
