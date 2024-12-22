@@ -6,7 +6,7 @@ const config: Config = {
   setupFilesAfterEnv: ['@testing-library/jest-native/extend-expect'],
   moduleDirectories: ['node_modules', './src/test'],
   collectCoverageFrom: [
-    'src/{components,utils,hooks,domain}/**/*.{js,jsx,ts,tsx}',
+    'src/{components,utils,hooks,domain,screens}/**/*.{js,jsx,ts,tsx}',
   ],
   coveragePathIgnorePatterns: ['/node_modules/', 'index'],
   transformIgnorePatterns: [

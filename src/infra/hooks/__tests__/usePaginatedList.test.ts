@@ -1,4 +1,4 @@
-import {MetaDataPage} from '@types';
+import {MetaDataPage, Page} from '@types';
 import {renderHook, waitFor} from 'test-utils';
 
 import {usePaginatedList} from '../usePaginatedList';
@@ -6,7 +6,7 @@ import {usePaginatedList} from '../usePaginatedList';
 const page1 = ['item1', 'item2', 'item3'];
 const page2 = ['item4', 'item5', 'item6'];
 
-async function getList(page: number) {
+async function getList(page: number): Promise<Page<string>> {
   const data = page === 1 ? page1 : page2;
 
   const meta: MetaDataPage = {
