@@ -26,7 +26,7 @@ export function usePaginatedList<Data>(
 
   useEffect(() => {
     if (query.data) {
-      console.log('query.data', query.data);
+      //console.log('query.data', query.data);
       const newList = query.data.pages.reduce<Data[]>((prev, curr) => {
         return [...prev, ...curr.data];
       }, []);
