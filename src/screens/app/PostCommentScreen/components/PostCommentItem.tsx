@@ -34,11 +34,11 @@ export function PostCommentItem({
 
   function confirmRemove() {
     Alert.alert('Desea eliminar el comentario?', 'Presione Confirmar', [
-      {text: 'Cancelar', style: 'cancel'},
       {
         text: 'Confirmar',
         onPress: () => mutate({postCommentId: postComment.id}),
       },
+      {text: 'Cancelar', style: 'cancel'},
     ]);
   }
 

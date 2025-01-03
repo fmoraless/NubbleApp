@@ -1,7 +1,7 @@
 import React, {ReactElement} from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
-import {AuthCredentialsProvider} from '@services';
+import {AuthCredentialsProvider, ToastProvider} from '@services';
 import {ThemeProvider} from '@shopify/restyle';
 import {
   QueryClient,
@@ -42,13 +42,11 @@ export const wrapAllProviders = () => {
   const queryClient = new QueryClient(queryClientConfig);
 
   return ({children}: {children: React.ReactNode}) => (
-    <AuthCredentialsProvider>
-      <QueryClientProvider client={queryClient}>
-        <ThemeProvider theme={theme}>
-          <NavigationContainer>{children}</NavigationContainer>
-        </ThemeProvider>
-      </QueryClientProvider>
-    </AuthCredentialsProvider>
+    <QueryClientProvider client={queryClient}>
+      <ThemeProvider theme={theme}>
+        <NavigationContainer>{children}</NavigationContainer>
+      </ThemeProvider>
+    </QueryClientProvider>
   );
 };
 
@@ -63,12 +61,18 @@ export const wrapScreenProviders = () => {
   const queryClient = new QueryClient(queryClientConfig);
 
   return ({children}: {children: React.ReactNode}) => (
-    <QueryClientProvider client={queryClient}>
-      <ThemeProvider theme={theme}>
-        <NavigationContainer>{children}</NavigationContainer>
-        <Toast />
-      </ThemeProvider>
-    </QueryClientProvider>
+    <AuthCredentialsProvider>
+      <QueryClientProvider client={queryClient}>
+        <ThemeProvider theme={theme}>
+          <NavigationContainer>
+            <ToastProvider>
+              {children}
+              <Toast />
+            </ToastProvider>
+          </NavigationContainer>
+        </ThemeProvider>
+      </QueryClientProvider>
+    </AuthCredentialsProvider>
   );
 };
 

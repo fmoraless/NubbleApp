@@ -71,6 +71,7 @@ describe('integracion: PostCommentScreen', () => {
       .mockResolvedValue(mockedPostComment.mateusAuthCredentials);
 
     let mockedConfirm: AlertButton['onPress'];
+
     const mockedAlert = jest
       .spyOn(Alert, 'alert')
       .mockImplementation((title, message, buttons) => {
