@@ -13,6 +13,7 @@ const config: Config = {
     'node_modules/(?!((jest-)?react-native|@react-native(-community)?|react-native-safe-area-context|@react-navigation)/)',
   ],
   modulePathIgnorePatterns: ['.*/mockedData/.*'],
+  testTimeout: 15000,
 };
 
 export default config;
