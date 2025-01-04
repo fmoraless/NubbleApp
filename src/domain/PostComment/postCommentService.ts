@@ -16,11 +16,16 @@ async function getList(
     per_page: PER_PAGE,
   });
 
+  return apiAdapter.toPageModel(
+    postCommentPageAPI,
+    postCommentAdapter.toPostComment,
+  );
+
   //return []; // for testing
-  return {
-    data: postCommentPageAPI.data.map(postCommentAdapter.toPostComment),
-    meta: apiAdapter.toMetaDataPage(postCommentPageAPI.meta),
-  };
+  // return {
+  //   data: postCommentPageAPI.data.map(postCommentAdapter.toPostComment),
+  //   meta: apiAdapter.toMetaDataPage(postCommentPageAPI.meta),
+  // };
 }
 
 async function create(postId: number, message: string): Promise<PostComment> {
