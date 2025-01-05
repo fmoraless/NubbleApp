@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
+import {FlatList, ListRenderItemInfo} from 'react-native';
 
-import {useUserSearch} from '@domain';
+import {User, useUserSearch} from '@domain';
 
-import {Icon, Screen, Text, TextInput} from '@components';
+import {Icon, ProfileUser, Screen, TextInput} from '@components';
 import {useDebounce} from '@hooks';
 import {AppScreenProps} from '@routes';
 
@@ -12,6 +13,10 @@ export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
 
   const {list} = useUserSearch(debouncedSearch);
   console.log('list', list);
+
+  function renderItem({item}: ListRenderItemInfo<User>) {
+    return <ProfileUser user={item} />;
+  }
 
   return (
     <Screen
@@ -24,10 +29,11 @@ export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
           LeftComponent={<Icon name="search" color="gray3" />}
         />
       }>
-      <Text>SearchScreen</Text>
-      {list.map(user => (
-        <Text key={user.id}>{user.username}</Text>
-      ))}
+      <FlatList
+        data={list}
+        renderItem={renderItem}
+        keyExtractor={item => item.username}
+      />
     </Screen>
   );
 }
