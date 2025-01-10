@@ -14,10 +14,10 @@ import {
 type ProfileUserProps = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>;
 } & PressableBoxProps;
+
 export function ProfileUser({
   user,
   onPress,
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ...pressableBoxProps
 }: ProfileUserProps) {
   //console.log('PostHeader::Author', author);
@@ -35,7 +35,8 @@ export function ProfileUser({
       flexDirection="row"
       alignItems="center"
       mb="s16"
-      onPress={handleOnPress}>
+      onPress={handleOnPress}
+      {...pressableBoxProps}>
       <ProfileAvatar imageURL={user.profileUrl} />
       <Text ml="s12" semibold preset="paragraphMedium">
         {user.username}

@@ -4,5 +4,5 @@ export type SearchHistoryService = {
   userList: User[];
   addUser: (user: User) => void;
   removeUser: (userId: User['id']) => void;
-  clear: () => void;
+  clearUserList: () => void;
 };

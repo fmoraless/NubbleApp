@@ -7,7 +7,6 @@ import {useSearchHistory} from '@services';
 import {Box, ProfileUser, Text} from '@components';
 
 export function SearchHistory() {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const userList = useSearchHistory();
 
   function renderItem({item}: ListRenderItemInfo<User>) {
@@ -20,7 +19,7 @@ export function SearchHistory() {
         ListHeaderComponent={
           <Text preset="headingMedium">Búsquedas recientes</Text>
         }
-        data={[]}
+        data={userList}
         renderItem={renderItem}
       />
     </Box>

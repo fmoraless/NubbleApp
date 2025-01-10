@@ -13,14 +13,13 @@ import {SearchHistory} from './components/SearchHistory';
 export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
   const [search, setSearch] = useState('');
   const debouncedSearch = useDebounce(search);
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const {addUser} = useSearchHistoryService();
 
   const {list} = useUserSearch(debouncedSearch);
   console.log('list', list);
 
   function renderItem({item}: ListRenderItemInfo<User>) {
-    return <ProfileUser user={item} />;
+    return <ProfileUser onPress={() => addUser(item)} user={item} />;
   }
 
   return (

@@ -11,7 +11,7 @@ const useSearchHistoryStore = create<SearchHistoryService>()(
       userList: [],
       addUser: user => {
         const userList = get().userList;
-        const updatedList = [user, ...userList];
+        const updatedList = [...userList, user];
         set({userList: updatedList});
       },
       removeUser: userId => {
@@ -19,7 +19,7 @@ const useSearchHistoryStore = create<SearchHistoryService>()(
         const updatedList = userList.filter(user => user.id !== userId);
         set({userList: updatedList});
       },
-      clear: () => {
+      clearUserList: () => {
         set({userList: []});
       },
     }),
@@ -41,6 +41,6 @@ export function useSearchHistoryService(): Omit<
 > {
   const addUser = useSearchHistoryStore(state => state.addUser);
   const removeUser = useSearchHistoryStore(state => state.removeUser);
-  const clearUserList = useSearchHistoryStore(state => state.clear);
-  return {addUser, removeUser, clear: clearUserList};
+  const clearUserList = useSearchHistoryStore(state => state.clearUserList);
+  return {addUser, removeUser, clearUserList};
 }

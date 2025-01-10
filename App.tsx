@@ -10,12 +10,6 @@ if (__DEV__) {
 
 import React from 'react';
 
-//import {ToastProvider} from '@services';
-import {
-  AuthCredentialsProvider,
-  initializeStorage,
-  MMKVStorage,
-} from '@services';
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -23,6 +17,8 @@ import {SafeAreaProvider} from 'react-native-safe-area-context';
 import {Toast} from '@components';
 
 import {Router} from './src/routes/Routes';
+import {AuthCredentialsProvider} from './src/services/authCredentials/Providers/AuthCredentialsProvider';
+import {initializeStorage, MMKVStorage} from './src/services/storage';
 import {theme} from './src/theme/theme';
 
 const queryClient = new QueryClient();
