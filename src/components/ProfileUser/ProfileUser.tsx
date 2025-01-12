@@ -9,14 +9,20 @@ import {
   ProfileAvatar,
   PressableBox,
   PressableBoxProps,
+  ProfileAvatarProps,
+  Box,
 } from '@components';
 
 type ProfileUserProps = {
   user: Pick<User, 'username' | 'profileUrl' | 'id'>;
+  avatarProps?: Omit<Partial<ProfileAvatarProps>, 'imageURL'>;
+  RightComponent?: React.ReactElement;
 } & PressableBoxProps;
 
 export function ProfileUser({
   user,
+  avatarProps,
+  RightComponent,
   onPress,
   ...pressableBoxProps
 }: ProfileUserProps) {
@@ -34,13 +40,17 @@ export function ProfileUser({
     <PressableBox
       flexDirection="row"
       alignItems="center"
+      justifyContent="space-between"
       mb="s16"
       onPress={handleOnPress}
       {...pressableBoxProps}>
-      <ProfileAvatar imageURL={user.profileUrl} />
-      <Text ml="s12" semibold preset="paragraphMedium">
-        {user.username}
-      </Text>
+      <Box flexDirection="row" alignItems="center">
+        <ProfileAvatar {...avatarProps} imageURL={user.profileUrl} />
+        <Text ml="s12" semibold preset="paragraphMedium">
+          {user.username}
+        </Text>
+      </Box>
+      {RightComponent}
     </PressableBox>
   );
 }
