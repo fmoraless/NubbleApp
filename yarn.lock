@@ -2561,6 +2561,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-camera-roll/camera-roll@npm:^7.9.0":
+  version: 7.9.0
+  resolution: "@react-native-camera-roll/camera-roll@npm:7.9.0"
+  peerDependencies:
+    react-native: ">=0.59"
+  checksum: aec50584e45fa5f678cf0405d9ceec7f6962946fdf483ffb1d138fac601433265cfffe0aad961dc4e1b97ab3dbf7a141e2fef6d7f0b17884116112c8cf341afe
+  languageName: node
+  linkType: hard
+
 "@react-native-community/cli-clean@npm:13.6.9":
   version: 13.6.9
   resolution: "@react-native-community/cli-clean@npm:13.6.9"
@@ -3784,6 +3793,7 @@ __metadata:
     "@hookform/resolvers": ^3.9.0
     "@jest/globals": ^29.7.0
     "@react-native-async-storage/async-storage": ^2.0.0
+    "@react-native-camera-roll/camera-roll": ^7.9.0
     "@react-native/babel-preset": 0.74.87
     "@react-native/eslint-config": 0.74.87
     "@react-native/metro-config": 0.74.87
