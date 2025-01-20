@@ -1,32 +1,40 @@
 import {useEffect, useState} from 'react';
 import {Platform, PermissionsAndroid} from 'react-native';
 
+import {QueryKeys} from '@infra';
 import {CameraRoll} from '@react-native-camera-roll/camera-roll';
+import {useInfiniteQuery} from '@tanstack/react-query';
 import {type} from '@testing-library/react-native/build/user-event/type';
 
-export function useCameraRoll() {
+import {cameraRollService} from './cameraRollService';
+
+export function useCameraRoll(hasPermission: boolean) {
   const [list, setList] = useState<string[]>([]);
-  async function getPhotos() {
-    const hasPermission = await hasAndroidPermission();
 
-    if (hasPermission) {
-      const photoPage = await CameraRoll.getPhotos({first: 10});
-
-      setList(photoPage.edges.map(edge => edge.node.image.uri));
-    }
-    return [];
-  }
+  const query = useInfiniteQuery({
+    queryKey: [QueryKeys.CameraRollList],
+    queryFn: ({pageParam}) => cameraRollService.getPhotos(pageParam),
+    getNextPageParam: ({cursor}) => cursor,
+    enabled: hasPermission,
+  });
 
   useEffect(() => {
-    getPhotos();
-  }, []);
+    if (query.data) {
+      const newList = query.data.pages.reduce<string[]>((prev, curr) => {
+        return [...prev, ...curr.photoList];
+      }, []);
+      setList(newList);
+    }
+  }, [query.data]);
 
   useEffect(() => {
     console.log('list', list);
   }, [list]);
 
   return {
-    list,
+    photoList: list,
+    hastNextPage: query.hasNextPage,
+    fetchNextPage: () => query.fetchNextPage(),
   };
 }
 
