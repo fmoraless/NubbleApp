@@ -80,6 +80,7 @@ async function hasAndroidPermission() {
   return await getRequestPermissionPromise();
 }
 
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
 async function savePicture() {
   if (Platform.OS === 'android' && !(await hasAndroidPermission())) {
     return;

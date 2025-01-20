@@ -1,5 +1,5 @@
 import React from 'react';
-import {Image, ImageBackground, StyleSheet, View} from 'react-native';
+import {ImageBackground, StyleSheet} from 'react-native';
 
 import {Box, BoxProps, Button, Icon, Text} from '@components';
 
@@ -20,7 +20,7 @@ const Header = ({imageUri, imageWidth}: Props) => {
           },
           styles.imageBackground,
         ]}>
-        <Button title="Seleccione una imagen" mb="s24" />
+        <Button preset="ghost" title="Seleccione una imagen" mb="s24" />
       </ImageBackground>
       <Box {...$optionsStyle}>
         <Text preset="headingSmall">Su Galería</Text>

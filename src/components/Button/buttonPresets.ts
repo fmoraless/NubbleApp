@@ -1,11 +1,12 @@
 import {ThemeColors} from '../../theme/theme';
 import {TouchableOpacityBoxProps} from '../Box/Box';
+import {TextProps} from '../Text/Text';
 
 import {ButtonPreset} from './Button';
 
 interface ButtonUI {
   container: TouchableOpacityBoxProps;
-  content: ThemeColors;
+  content: {color: ThemeColors; textProps?: TextProps};
 }
 
 export const buttonPresets: Record<
@@ -20,13 +21,13 @@ export const buttonPresets: Record<
       container: {
         backgroundColor: 'primary',
       },
-      content: 'primaryContrast',
+      content: {color: 'primaryContrast'},
     },
     disabled: {
       container: {
         backgroundColor: 'gray4',
       },
-      content: 'gray2',
+      content: {color: 'gray2'},
     },
   },
   outline: {
@@ -36,13 +37,13 @@ export const buttonPresets: Record<
         borderWidth: 1,
         borderColor: 'primary',
       },
-      content: 'primary',
+      content: {color: 'primary'},
     },
     disabled: {
       container: {
         backgroundColor: 'gray4',
       },
-      content: 'gray2',
+      content: {color: 'gray2'},
     },
   },
   secondary: {
@@ -50,13 +51,13 @@ export const buttonPresets: Record<
       container: {
         backgroundColor: 'carrotSecondary',
       },
-      content: 'primaryContrast',
+      content: {color: 'primaryContrast'},
     },
     disabled: {
       container: {
         backgroundColor: 'gray4',
       },
-      content: 'gray2',
+      content: {color: 'gray2'},
     },
   },
   disabled: {
@@ -64,13 +65,35 @@ export const buttonPresets: Record<
       container: {
         backgroundColor: 'gray4',
       },
-      content: 'gray2',
+      content: {color: 'gray2'},
     },
     disabled: {
       container: {
         backgroundColor: 'gray4',
       },
-      content: 'gray2',
+      content: {color: 'gray2'},
+    },
+  },
+  ghost: {
+    default: {
+      container: {
+        backgroundColor: 'white70',
+        height: 40,
+      },
+      content: {
+        color: 'grayBlack',
+        textProps: {
+          preset: 'paragraphSmall',
+          bold: false,
+        },
+      },
+    },
+    disabled: {
+      container: {
+        backgroundColor: 'grayWhite',
+        height: 40,
+      },
+      content: {color: 'grayBlack'},
     },
   },
 };

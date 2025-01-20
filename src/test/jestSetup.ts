@@ -1,5 +1,4 @@
 //@ts-ignore
-import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 import mockSafeAreaContext from 'react-native-safe-area-context/jest/mock';
 
 import {initializeStorage} from '../services/storage';
