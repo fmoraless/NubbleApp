@@ -1,10 +1,7 @@
 import {useEffect, useState} from 'react';
-import {Platform, PermissionsAndroid} from 'react-native';
 
 import {QueryKeys} from '@infra';
-import {CameraRoll} from '@react-native-camera-roll/camera-roll';
 import {useInfiniteQuery} from '@tanstack/react-query';
-import {type} from '@testing-library/react-native/build/user-event/type';
 
 import {cameraRollService} from './cameraRollService';
 
@@ -45,61 +42,61 @@ export function useCameraRoll(
   };
 }
 
-async function hasAndroidPermission() {
-  if (Platform.OS === 'ios') {
-    return true;
-  }
-  const getCheckPermissionPromise = () => {
-    if (Platform.Version >= 33) {
-      return Promise.all([
-        PermissionsAndroid.check(
-          PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES,
-        ),
-        PermissionsAndroid.check(
-          PermissionsAndroid.PERMISSIONS.READ_MEDIA_VIDEO,
-        ),
-      ]).then(
-        ([hasReadMediaImagesPermission, hasReadMediaVideoPermission]) =>
-          hasReadMediaImagesPermission && hasReadMediaVideoPermission,
-      );
-    } else {
-      return PermissionsAndroid.check(
-        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      );
-    }
-  };
+// async function hasAndroidPermission() {
+//   if (Platform.OS === 'ios') {
+//     return true;
+//   }
+//   const getCheckPermissionPromise = () => {
+//     if (Platform.Version >= 33) {
+//       return Promise.all([
+//         PermissionsAndroid.check(
+//           PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES,
+//         ),
+//         PermissionsAndroid.check(
+//           PermissionsAndroid.PERMISSIONS.READ_MEDIA_VIDEO,
+//         ),
+//       ]).then(
+//         ([hasReadMediaImagesPermission, hasReadMediaVideoPermission]) =>
+//           hasReadMediaImagesPermission && hasReadMediaVideoPermission,
+//       );
+//     } else {
+//       return PermissionsAndroid.check(
+//         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+//       );
+//     }
+//   };
 
-  const hasPermission = await getCheckPermissionPromise();
-  if (hasPermission) {
-    return true;
-  }
-  const getRequestPermissionPromise = () => {
-    if (Platform.Version >= 33) {
-      return PermissionsAndroid.requestMultiple([
-        PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES,
-        PermissionsAndroid.PERMISSIONS.READ_MEDIA_VIDEO,
-      ]).then(
-        statuses =>
-          statuses[PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES] ===
-            PermissionsAndroid.RESULTS.GRANTED &&
-          statuses[PermissionsAndroid.PERMISSIONS.READ_MEDIA_VIDEO] ===
-            PermissionsAndroid.RESULTS.GRANTED,
-      );
-    } else {
-      return PermissionsAndroid.request(
-        PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
-      ).then(status => status === PermissionsAndroid.RESULTS.GRANTED);
-    }
-  };
+//   const hasPermission = await getCheckPermissionPromise();
+//   if (hasPermission) {
+//     return true;
+//   }
+//   const getRequestPermissionPromise = () => {
+//     if (Platform.Version >= 33) {
+//       return PermissionsAndroid.requestMultiple([
+//         PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES,
+//         PermissionsAndroid.PERMISSIONS.READ_MEDIA_VIDEO,
+//       ]).then(
+//         statuses =>
+//           statuses[PermissionsAndroid.PERMISSIONS.READ_MEDIA_IMAGES] ===
+//             PermissionsAndroid.RESULTS.GRANTED &&
+//           statuses[PermissionsAndroid.PERMISSIONS.READ_MEDIA_VIDEO] ===
+//             PermissionsAndroid.RESULTS.GRANTED,
+//       );
+//     } else {
+//       return PermissionsAndroid.request(
+//         PermissionsAndroid.PERMISSIONS.READ_EXTERNAL_STORAGE,
+//       ).then(status => status === PermissionsAndroid.RESULTS.GRANTED);
+//     }
+//   };
 
-  return await getRequestPermissionPromise();
-}
+//   return await getRequestPermissionPromise();
+// }
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-async function savePicture() {
-  if (Platform.OS === 'android' && !(await hasAndroidPermission())) {
-    return;
-  }
+// // eslint-disable-next-line @typescript-eslint/no-unused-vars
+// async function savePicture() {
+//   if (Platform.OS === 'android' && !(await hasAndroidPermission())) {
+//     return;
+//   }
 
-  CameraRoll.save(tag, {type, album});
-}
+//   CameraRoll.save(tag, {type, album});
+// }

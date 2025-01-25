@@ -1,4 +1,4 @@
-import {PermissionsAndroid, Platform} from 'react-native';
+import {Permission, PermissionsAndroid, Platform} from 'react-native';
 
 import {
   PermissionName,
@@ -32,7 +32,7 @@ function mapNameToPermission(name: PermissionName): Permission | null {
   switch (name) {
     case 'photoLibrary':
       if (Platform.Version >= 33) {
-        return 'android.permission.READ_EXTERNAL_IMAGES';
+        return 'android.permission.READ_MEDIA_IMAGES';
       } else {
         return 'android.permission.READ_EXTERNAL_STORAGE';
       }
