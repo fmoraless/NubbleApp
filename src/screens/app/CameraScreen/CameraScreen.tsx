@@ -1,7 +1,11 @@
 import React, {useState} from 'react';
 import {Dimensions, StyleSheet} from 'react-native';
 
+import {useIsFocused} from '@react-navigation/native';
+import {Camera, useCameraDevice} from 'react-native-vision-camera';
+
 import {Box, BoxProps, Icon, PermissionManager} from '@components';
+import {useAppState} from '@hooks';
 import {useAppSafeArea} from '@hooks';
 import {AppScreenProps} from '@routes';
 const SCREEN_WIDTH = Dimensions.get('screen').width;
@@ -11,6 +15,17 @@ const CONTROL_DIFF = 30;
 export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
   const {top} = useAppSafeArea();
   const [flashOn, setFlasOn] = useState(false);
+  const device = useCameraDevice('back');
+
+  const isFocused = useIsFocused();
+  const appState = useAppState();
+  const isActive = isFocused && appState === 'active';
+
+  console.log({
+    isFocused,
+    appState,
+    isActive,
+  });
 
   function toggleFlash() {
     setFlasOn(prev => !prev);
@@ -22,6 +37,14 @@ export function CameraScreen({navigation}: AppScreenProps<'CameraScreen'>) {
       description="Necesitamos acceder a la cámara para poder tomar fotos.">
       <Box flex={1}>
         <Box backgroundColor="grayWhite" style={StyleSheet.absoluteFill} />
+        {device != null && (
+          <Camera
+            style={StyleSheet.absoluteFill}
+            device={device}
+            isActive={isActive}
+          />
+        )}
+
         <Box flex={1} justifyContent="space-between">
           <Box {...$controlAreaTop} style={{paddingTop: top}}>
             <Icon
