@@ -19,6 +19,11 @@ const Header = ({imageUri, imageWidth}: Props) => {
       navigation.navigate('PublishPostScreen', {imageUri: imageUri});
     }
   }
+
+  function navigateToCamera() {
+    navigation.navigate('CameraScreen');
+  }
+
   return (
     <Box>
       <ImageBackground
@@ -41,7 +46,7 @@ const Header = ({imageUri, imageWidth}: Props) => {
       </ImageBackground>
       <Box {...$optionsStyle}>
         <Text preset="headingSmall">Su Galería</Text>
-        <Icon name="camera" />
+        <Icon name="camera" onPress={navigateToCamera} />
       </Box>
     </Box>
   );
