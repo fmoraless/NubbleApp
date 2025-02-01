@@ -1,2 +1,4 @@
-export * from './MultimediaService';
+export * from './multimediaService';
 export * from './multimediaType';
+
+export * from './useMultimediaGetPhotos';

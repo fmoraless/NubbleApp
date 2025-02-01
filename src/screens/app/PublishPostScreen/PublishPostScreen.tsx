@@ -17,7 +17,7 @@ export function PublishPostScreen({
 
   const {showToast} = useToastService();
 
-  const {createPost, isLoading, isError} = usePostCreate({
+  const {createPost, isLoading} = usePostCreate({
     onSuccess: () => {
       navigation.navigate('AppTabNavigator', {screen: 'HomeScreen'});
       showToast({message: 'Foto publicada correctamente', type: 'success'});
