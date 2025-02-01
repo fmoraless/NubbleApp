@@ -1,4 +1,5 @@
 import {apiAdapter} from '@api';
+import {ImageForUpload} from '@services';
 import {Page} from '@types';
 
 import {postAdapter} from './postAdapter';
@@ -9,14 +10,17 @@ async function getList(page: number): Promise<Page<Post>> {
   const postPageAPI = await postApi.getList({page, per_page: 10});
 
   return apiAdapter.toPageModel(postPageAPI, postAdapter.toPost);
+}
 
-  //return []; // for testing
-  // return {
-  //   data: postPageAPI.data.map(postAdapter.toPost),
-  //   meta: apiAdapter.toMetaDataPage(postPageAPI.meta),
-  // };
+async function createPost(
+  text: string,
+  imageCover: ImageForUpload,
+): Promise<Post> {
+  const postApiData = await postApi.createPost(text, imageCover);
+  return postAdapter.toPost(postApiData);
 }
 
 export const postService = {
   getList,
+  createPost,
 };
