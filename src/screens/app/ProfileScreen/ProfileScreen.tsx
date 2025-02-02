@@ -7,7 +7,7 @@ import {ActivityIndicator, Box, ProfileAvatar, Screen, Text} from '@components';
 import {AppScreenProps} from '@routes';
 
 export function ProfileScreen({route}: AppScreenProps<'ProfileScreen'>) {
-  console.log('route.params', route.params);
+  //console.log('route.params', route.params);
   const userId = route.params.userId;
 
   const {isLoading, isError, user, refetch, isFetching} =

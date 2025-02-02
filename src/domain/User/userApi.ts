@@ -6,7 +6,7 @@ export const USER_PATH = 'users';
 
 async function getById(userId: string): Promise<UserAPI> {
   const response = await api.get<UserAPI>(`${USER_PATH}/${userId}`);
-  console.log('UserAPI', response.data);
+  //console.log('UserAPI', response.data);
   return response.data;
 }
 

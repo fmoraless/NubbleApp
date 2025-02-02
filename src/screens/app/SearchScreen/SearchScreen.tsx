@@ -16,7 +16,7 @@ export function SearchScreen({}: AppScreenProps<'SearchScreen'>) {
   const {addUser} = useSearchHistoryService();
 
   const {list} = useUserSearch(debouncedSearch);
-  console.log('list', list);
+  //  console.log('list', list);
 
   function renderItem({item}: ListRenderItemInfo<User>) {
     return (
