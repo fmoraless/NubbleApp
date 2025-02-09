@@ -40,9 +40,10 @@ const lightTheme = {
   successLight: palette.greenSuccessLight,
 
   marked: palette.carrotSecondary,
+  paragraph: palette.gray1,
 };
 
-const darkTheme = {
+const darkTheme: typeof lightTheme = {
   ...palette,
   primary: palette.carrotSecondary,
   primaryContrast: palette.grayWhite,
@@ -60,6 +61,7 @@ const darkTheme = {
   successLight: palette.greenSuccessLight,
 
   marked: palette.carrotSecondary,
+  paragraph: palette.grayWhite,
 };
 
 export const colors = {palette, lightTheme, darkTheme};
