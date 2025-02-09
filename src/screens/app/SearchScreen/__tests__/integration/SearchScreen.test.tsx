@@ -11,6 +11,7 @@ jest.unmock('@react-navigation/native');
 
 beforeAll(() => {
   server.listen();
+  jest.useFakeTimers();
   jest
     .spyOn(authCredentialsStorage, 'get')
     .mockResolvedValue(mockUtils.mateusAuthCredentials);
@@ -21,6 +22,7 @@ afterEach(() => {
 
 afterAll(() => {
   server.close();
+  jest.useRealTimers();
   jest.resetAllMocks();
 });
 
