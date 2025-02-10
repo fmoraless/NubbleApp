@@ -13,7 +13,7 @@ export function SuccessScreen({
 
   return (
     <Screen>
-      <Icon name="checkRound" size={48} color="success" />
+      <Icon {...route.params.icon} />
       <Text preset="headingLarge" mt="s24">
         {route.params.title}
       </Text>

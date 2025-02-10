@@ -19,8 +19,9 @@ const resetParam: AuthStackParamList['SuccessScreen'] = {
   description:
     'Hemos enviado un enlace a su correo para recuperar su contraseña.',
   icon: {
-    name: 'checkRound',
-    color: 'success',
+    name: 'messageRound',
+    color: 'iconColor',
+    fillColor: 'iconFillColor',
   },
 };
 
@@ -47,15 +48,7 @@ export function ForgotPasswordScreen({}: AuthScreenProps<'ForgotPasswordScreen'>
 
     requestNewPassword(values.email);
 
-    /* navigation.navigate('SuccessScreen', {
-      title: 'Correo enviado',
-      description:
-        'Hemos enviado un enlace a su correo para recuperar su contraseña.',
-      icon: {
-        name: 'checkRound',
-        color: 'success',
-      },
-    }); */
+    reset(resetParam);
   }
 
   return (
