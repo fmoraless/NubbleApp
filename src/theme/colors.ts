@@ -47,6 +47,9 @@ const lightTheme = {
 
   separator: palette.gray4,
   paragraphSecondary: palette.gray1,
+
+  onBackgroundGray1: palette.gray1,
+  onBackgroundGray2: palette.gray4,
 };
 
 const darkTheme: typeof lightTheme = {
@@ -74,6 +77,9 @@ const darkTheme: typeof lightTheme = {
 
   separator: palette.gray1,
   paragraphSecondary: palette.gray3,
+
+  onBackgroundGray1: palette.gray3,
+  onBackgroundGray2: palette.gray1,
 };
 
 export const colors = {palette, lightTheme, darkTheme};
