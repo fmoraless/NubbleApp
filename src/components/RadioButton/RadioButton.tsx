@@ -17,7 +17,7 @@ export function RadioButton({isSelected, onPress}: RadiobuttonProps) {
       height={20}
       width={20}
       borderWidth={isSelected ? 2 : 1}
-      borderRadius="s12"
+      borderRadius={'s12'}
       borderColor={isSelected ? 'primary' : 'onBackgroundGray2'}>
       <Box
         backgroundColor={isSelected ? 'primary' : undefined}
