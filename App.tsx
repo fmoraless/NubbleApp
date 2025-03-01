@@ -16,6 +16,7 @@ import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Toast} from '@components';
+import {useAppColorScheme} from '@hooks';
 
 import {Router} from './src/routes/Routes';
 import {AuthCredentialsProvider} from './src/services/authCredentials/Providers/AuthCredentialsProvider';
@@ -28,6 +29,7 @@ initializeStorage(MMKVStorage);
 
 function App(): React.JSX.Element {
   const appColor = useAppColor();
+  useAppColorScheme();
 
   return (
     <AuthCredentialsProvider>
