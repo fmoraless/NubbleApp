@@ -8,9 +8,9 @@ if (__DEV__) {
  * @format
  */
 
-import React from 'react';
+import React, {useEffect} from 'react';
 
-import {useAppColor} from '@services';
+import {settingsService, useAppColor} from '@services';
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -28,8 +28,12 @@ const queryClient = new QueryClient();
 initializeStorage(MMKVStorage);
 
 function App(): React.JSX.Element {
-  const appColor = useAppColor();
   useAppColorScheme();
+  const appColor = useAppColor();
+
+  useEffect(() => {
+    settingsService.handleStatusBar(appColor);
+  }, [appColor]);
 
   return (
     <AuthCredentialsProvider>

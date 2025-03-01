@@ -2,7 +2,7 @@ import React from 'react';
 
 import {useSettingsService, useThemePreference} from '@services';
 
-import {Screen, RadioButtonSelector, Text} from '@components';
+import {Screen, RadioButtonSelector} from '@components';
 import {AppScreenProps} from '@routes';
 
 type ThemePreference = 'light' | 'dark' | 'system';
@@ -52,10 +52,6 @@ export function DarkModeScreen({}: AppScreenProps<'DarkModeScreen'>) {
         valueKey="themePreference"
         descriptionKey="description"
       />
-
-      <Text preset="paragraphLarge" mt="s48">
-        {JSON.stringify(selectedItem, null, 2)}
-      </Text>
     </Screen>
   );
 }
