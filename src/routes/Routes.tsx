@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import React from 'react';
 
 import {NavigationContainer} from '@react-navigation/native';
@@ -7,6 +8,7 @@ import {ActivityIndicator, Box} from '@components';
 
 import {AppStack} from './AppStack';
 import {AuthStack} from './AuthStack';
+import {OnboardingStack} from './OnboardingStack';
 
 export function Router() {
   //const authenticated = false;
@@ -25,7 +27,8 @@ export function Router() {
   }
   return (
     <NavigationContainer>
-      {authCredentials ? <AppStack /> : <AuthStack />}
+      {/* {authCredentials ? <AppStack /> : <AuthStack />} */}
+      <OnboardingStack />
     </NavigationContainer>
   );
 }
