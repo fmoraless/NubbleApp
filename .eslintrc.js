@@ -41,6 +41,7 @@ module.exports = {
             'newlines-between': 'always',
           },
         ],
+        'react-native/no-inline-styles': 'off',
       },
       extends: ['plugin:testing-library/react'],
     },

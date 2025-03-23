@@ -18,7 +18,7 @@ const ImageHeader = ({image}: ImageHeaderProps) => {
   const source = appColor === 'light' ? image.light : image.dark;
   return (
     <Box>
-      <Image source={source} style={{width: SCREEN_WIDTH}} />
+      <Image source={source} style={{width: SCREEN_WIDTH, height: '100%'}} />
     </Box>
   );
 };
