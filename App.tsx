@@ -10,7 +10,6 @@ if (__DEV__) {
 
 import React, {useEffect} from 'react';
 
-import {settingsService, useAppColor} from '@services';
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
@@ -20,6 +19,8 @@ import {useAppColorScheme} from '@hooks';
 
 import {Router} from './src/routes/Routes';
 import {AuthCredentialsProvider} from './src/services/authCredentials/Providers/AuthCredentialsProvider';
+import {settingsService} from './src/services/settings/settingsService';
+import {useAppColor} from './src/services/settings/useSettings';
 import {initializeStorage, MMKVStorage} from './src/services/storage';
 import {darkTheme, theme} from './src/theme/theme';
 
