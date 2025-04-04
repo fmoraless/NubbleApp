@@ -12,6 +12,7 @@ import React, {useEffect} from 'react';
 
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
+import BootSplash from 'react-native-bootsplash';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Toast} from '@components';
@@ -31,6 +32,17 @@ initializeStorage(MMKVStorage);
 function App(): React.JSX.Element {
   useAppColorScheme();
   const appColor = useAppColor();
+
+  useEffect(() => {
+    const init = async () => {
+      // …do multiple sync or async tasks
+    };
+
+    init().finally(async () => {
+      await BootSplash.hide({fade: true});
+      console.log('BootSplash has been hidden successfully');
+    });
+  }, []);
 
   useEffect(() => {
     settingsService.handleStatusBar(appColor);
