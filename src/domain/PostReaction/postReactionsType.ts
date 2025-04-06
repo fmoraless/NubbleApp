@@ -14,7 +14,7 @@ export interface PostReactionBase {
 }
 
 export interface PostReaction extends PostReactionBase {
-  auithor: User;
+  author: User;
   post: Pick<Post, 'id' | 'text' | 'imageURL'>;
 }
 
