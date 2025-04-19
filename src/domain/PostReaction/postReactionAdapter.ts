@@ -21,14 +21,14 @@ function toPostReactionBase(
   };
 }
 
-function toPostReaction(PostReactionAPI: PostReactionAPI): PostReaction {
+function toPostReaction(postReactionAPI: PostReactionAPI): PostReaction {
   return {
-    ...toPostReactionBase(PostReactionAPI),
-    author: userAdapter.toUser(PostReactionAPI.user),
+    ...toPostReactionBase(postReactionAPI),
+    author: userAdapter.toUser(postReactionAPI.user),
     post: {
-      id: PostReactionAPI.post.id,
-      text: PostReactionAPI.post.text,
-      imageURL: PostReactionAPI.post.image_url,
+      id: postReactionAPI.post.id,
+      text: postReactionAPI.post.text,
+      imageURL: postReactionAPI.post.image_url,
     },
   };
 }

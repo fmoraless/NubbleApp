@@ -6,7 +6,7 @@ import {
   PostReactionType,
 } from './postReactionsType';
 
-export const POST_REACTION_PATH = '/user_reactions';
+export const POST_REACTION_PATH = '/user/reactions';
 
 type MyReactionsParam = PageParams & {
   post_id?: number;
@@ -17,13 +17,14 @@ async function getMyReactions(
   myReactionsParam?: MyReactionsParam,
 ): Promise<PageAPI<PostReactionAPI>> {
   const response = await api.get<PageAPI<PostReactionAPI>>(
-    `${POST_REACTION_PATH}/my_reactions`,
+    `${POST_REACTION_PATH}/my-reactions`,
     {
       params: {
         ...myReactionsParam,
       },
     },
   );
+  console.log('getMyReactions', response.data);
   return response.data;
 }
 
