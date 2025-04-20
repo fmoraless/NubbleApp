@@ -25,9 +25,9 @@ import {useAppColor} from './src/services/settings/useSettings';
 import {initializeStorage, MMKVStorage} from './src/services/storage';
 import {darkTheme, theme} from './src/theme/theme';
 
-const queryClient = new QueryClient();
-
 initializeStorage(MMKVStorage);
+
+const queryClient = new QueryClient();
 
 function App(): React.JSX.Element {
   useAppColorScheme();

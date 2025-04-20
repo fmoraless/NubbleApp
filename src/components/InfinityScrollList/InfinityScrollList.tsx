@@ -46,7 +46,6 @@ export function InfinityScrollList<ItemT extends ItemTConstraints>({
       refreshControl={
         <RefreshControl refreshing={isLoading} onRefresh={refresh} />
       }
-      contentContainerStyle={{flex: list.length === 0 ? 1 : undefined}}
       ListEmptyComponent={
         <EmptyList
           refetch={refresh}
@@ -56,6 +55,10 @@ export function InfinityScrollList<ItemT extends ItemTConstraints>({
         />
       }
       {...flatListProps}
+      contentContainerStyle={[
+        {flex: list.length === 0 ? 1 : undefined},
+        flatListProps?.contentContainerStyle,
+      ]}
     />
   );
 }

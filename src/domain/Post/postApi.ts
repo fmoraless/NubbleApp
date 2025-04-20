@@ -1,9 +1,10 @@
-import {api, PageAPI} from '@api';
+import {api, apiAdapter, PageAPI} from '@api';
 import {ImageForUpload} from '@services';
 
 import {PageParams} from '../../api/apiTypes';
 
-import {PostAPI} from './postTypes';
+import {postAdapter} from './postAdapter';
+import {PostAPI, Post} from './postTypes';
 
 async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
   //await new Promise(resolve => setTimeout(resolve, 2000));
@@ -26,7 +27,13 @@ async function createPost(
   return response.data;
 }
 
+async function getById(postId: string): Promise<PostAPI> {
+  const response = await api.get<PostAPI>(`user/post/${postId}`);
+  return response.data;
+}
+
 export const postApi = {
   getList,
   createPost,
+  getById,
 };
