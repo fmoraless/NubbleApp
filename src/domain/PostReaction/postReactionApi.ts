@@ -24,7 +24,7 @@ async function getMyReactions(
       },
     },
   );
-  console.log('getMyReactions', response.data);
+
   return response.data;
 }
 
