@@ -54,7 +54,7 @@ export function useReactToPost({
   });
 
   function reactToPost() {
-    toggleReactionState;
+    toggleReactionState();
     mutate();
   }
 
