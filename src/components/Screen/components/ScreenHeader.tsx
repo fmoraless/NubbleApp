@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {useNavigation} from '@react-navigation/native';
 
 import {Box, BoxProps, Icon, Text, TouchableOpacityBox} from '@components';

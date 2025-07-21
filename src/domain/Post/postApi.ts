@@ -1,10 +1,9 @@
-import {api, apiAdapter, PageAPI} from '@api';
+import {api, PageAPI} from '@api';
 import {ImageForUpload} from '@services';
 
 import {PageParams} from '../../api/apiTypes';
 
-import {postAdapter} from './postAdapter';
-import {PostAPI, Post} from './postTypes';
+import {PostAPI} from './postTypes';
 
 async function getList(params?: PageParams): Promise<PageAPI<PostAPI>> {
   //await new Promise(resolve => setTimeout(resolve, 2000));

@@ -12,7 +12,7 @@ import React, {useEffect} from 'react';
 
 import {ThemeProvider} from '@shopify/restyle';
 import {QueryClientProvider, QueryClient} from '@tanstack/react-query';
-import BootSplash from 'react-native-bootsplash';
+//import BootSplash from 'react-native-bootsplash';
 import {SafeAreaProvider} from 'react-native-safe-area-context';
 
 import {Toast} from '@components';

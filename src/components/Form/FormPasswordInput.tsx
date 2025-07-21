@@ -8,7 +8,7 @@ export function FormPasswordInput<FormType extends FieldValues>({
   control,
   name,
   rules,
-  ...PasswordInputProps
+  ...passwordInputProps
 }: PasswordInputProps & UseControllerProps<FormType>) {
   return (
     <Controller
@@ -20,7 +20,7 @@ export function FormPasswordInput<FormType extends FieldValues>({
           value={field.value}
           onChangeText={field.onChange}
           errorMessage={fieldState.error?.message}
-          {...PasswordInputProps}
+          {...passwordInputProps}
         />
       )}
     />

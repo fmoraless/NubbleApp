@@ -9,7 +9,7 @@ export function FormTextInput<FormType extends FieldValues>({
   name,
   rules,
   errorMessage,
-  ...TextInputProps
+  ...textInputProps
 }: TextInputProps & UseControllerProps<FormType>) {
   return (
     <Controller
@@ -21,7 +21,7 @@ export function FormTextInput<FormType extends FieldValues>({
           value={field.value}
           onChangeText={field.onChange}
           errorMessage={fieldState.error?.message || errorMessage}
-          {...TextInputProps}
+          {...textInputProps}
         />
       )}
     />
