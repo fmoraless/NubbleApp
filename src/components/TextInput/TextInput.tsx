@@ -7,6 +7,7 @@ import {
 } from 'react-native';
 
 import {useAppTheme} from '@hooks';
+import {colors} from '@theme';
 
 import {Box, BoxProps} from '../Box/Box';
 import {$fontFamily, $fontSizes, Text} from '../Text/Text';
@@ -28,7 +29,7 @@ export function TextInput({
   containerProps,
   ...rnTextInputProps
 }: TextInputProps) {
-  const {colors} = useAppTheme();
+  //const {colors} = useAppTheme();
   const inputRef = useRef<RNTextInput>(null);
 
   const $textInputContainer: BoxProps = {
