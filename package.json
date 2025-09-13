@@ -1,6 +1,6 @@
 {
   "name": "NubbleApp",
-  "version": "1.4.7",
+  "version": "1.4.10",
   "private": true,
   "scripts": {
     "android": "react-native run-android",
