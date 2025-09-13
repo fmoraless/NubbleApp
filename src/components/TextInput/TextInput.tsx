@@ -6,7 +6,6 @@ import {
   TextStyle,
 } from 'react-native';
 
-import {useAppTheme} from '@hooks';
 import {colors} from '@theme';
 
 import {Box, BoxProps} from '../Box/Box';
