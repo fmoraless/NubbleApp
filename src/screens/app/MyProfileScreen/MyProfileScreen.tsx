@@ -11,5 +11,5 @@ export function MyProfileScreen({}: AppTabScreenProps<'MyProfileScreen'>) {
   if (!userId) {
     return null;
   }
-  return <ProfileTemplate userId={userId} />;
+  return <ProfileTemplate userId={userId} isMyProfile />;
 }
